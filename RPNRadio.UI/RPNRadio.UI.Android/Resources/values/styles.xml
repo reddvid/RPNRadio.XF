@@ -3,28 +3,91 @@
 
   <style name="MainTheme" parent="MainTheme.Base">
   </style>
-  <!-- Base theme applied no matter what API -->
-  <style name="MainTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
-    <!--If you are using revision 22.1 please use just windowNoTitle. Without android:-->
-    <item name="windowNoTitle">true</item>
-    <!--We will be using the toolbar so no need to show ActionBar-->
+
+  <!--Base theme applied no matter what API-->
+  <style name="MainTheme.Base" parent="Theme.MaterialComponents.NoActionBar">
+    <item name="android:windowBackground">@color/colorPrimary</item>
+    <item name="android:windowNoTitle">true</item>
     <item name="windowActionBar">false</item>
-    <!-- Set theme colors from https://aka.ms/material-colors -->
-    <!-- colorPrimary is used for the default action bar background -->
-    <item name="colorPrimary">#2196F3</item>
-    <!-- colorPrimaryDark is used for the status bar -->
-    <item name="colorPrimaryDark">#1976D2</item>
-    <!-- colorAccent is used as the default value for colorControlActivated
-         which is used to tint widgets -->
-    <item name="colorAccent">#FF4081</item>
-    <!-- You can also set colorControlNormal, colorControlActivated
-         colorControlHighlight and colorSwitchThumbNormal. -->
+    <item name="windowActionModeOverlay">true</item>
+
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+
+    <item name="android:navigationBarColor">@color/colorPrimary</item>
+
+    <item name="android:datePickerDialogTheme">@style/MainTheme.Dialog</item>
+
+    <item name="android:textAllCaps">false</item>
+
+    <item name="android:colorActivatedHighlight">@android:color/transparent</item>
+  </style>
+
+  <style name="MainTheme.Dialog" parent="Theme.MaterialComponents.Dialog">
+    <item name="colorAccent">@color/colorAccent</item>
+    <item name="android:windowBackground">@color/colorPrimary</item>
+  </style>
+
+  <style name="MainTheme.Launcher" parent="MainTheme.Base">
+    <item name="android:windowBackground">@drawable/splash_screen</item>
+    <item name="android:statusBarColor">@android:color/transparent</item>
+    <item name="android:navigationBarColor">@android:color/transparent</item>
+    <item name="android:windowTranslucentStatus">false</item>
+    <item name="android:windowTranslucentNavigation">false</item>
+  </style>
+
+  <style name="MainTheme.Alert"
+		parent="Theme.MaterialComponents.Dialog.Alert">
+
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowBackground">@color/colorPrimary</item>
+
+    <item name="materialButtonStyle">@style/Widget.MaterialComponents.Button.TextButton</item>
+  </style>
+
+  <style name="MainTheme.BottomSheet"
+		parent="Theme.MaterialComponents.BottomSheetDialog">
+
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+
+  </style>
+
+
+  <!--<style name="MainTheme" parent="MainTheme.Base">
+  </style>
+  <style name="MainTheme.Base" parent="Theme.AppCompat.Light">
+    <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+    <item name="android:windowLightStatusBar">true</item>
+    <item name="android:textAppearanceButton">@style/MyTextAppearance.Material.Button</item>
+    <item name="windowNoTitle">true</item>
+    <item name="windowActionBar">false</item>
+    <item name="colorPrimary">#EF2227</item>
+    <item name="colorPrimaryDark">#E92428</item>
+    <item name="colorAccent">#E92428</item>
     <item name="windowActionModeOverlay">true</item>
 
     <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
   </style>
-
-  <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
-    <item name="colorAccent">#FF4081</item>
+  
+  <style name="MyTextAppearance.Material.Button" parent="@android:style/TextAppearance.Material.Button">
+    <item name="textAllCaps">false</item>
+    <item name="android:textAllCaps">false</item>
   </style>
+  
+  <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+    <item name="colorAccent">#E92428</item>
+  </style>
+
+  <style name="MainTheme.Launcher" parent="MainTheme.Base">
+    <item name="android:windowBackground">@drawable/splash_screen</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowFullscreen">false</item>
+  </style>-->
 </resources>

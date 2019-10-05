@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage
+    x:Class="RPNRadio.UI.Pages.NewsFeedPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:RPNRadio.Core.ViewModels;assembly=RPNRadio.Core"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    Title="News Feed"
+    x:TypeArguments="viewModels:NewsFeedViewModel"
+    NavigationPage.HasNavigationBar="True"
+    mc:Ignorable="d">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            mvx:Bi.nd="Command ReloadNewsCommand"
+            IconImageSource="outline_refresh_24"
+            Order="Primary" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <views:MvxListView
+            HasUnevenRows="True"
+            IsPullToRefreshEnabled="True"
+            IsRefreshing="{Binding IsRefreshing}"
+            ItemClick="{mvx:MvxBind ReadCommand}"
+            ItemsSource="{mvx:MvxBind NewsItems}"
+            RefreshCommand="{Binding ReloadNewsCommand}"
+            SelectedItem="{Binding SelectedNewsItem, Mode=TwoWay}"
+            SelectionMode="Single"
+            SeparatorVisibility="None">
+            <views:MvxListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Margin="0,4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image
+                                HeightRequest="120"
+                                Source="{Binding ThumbPath}"
+                                WidthRequest="120" />
+                            <Grid
+                                Grid.Column="1"
+                                Margin="0,0,20,0"
+                                HorizontalOptions="StartAndExpand"
+                                VerticalOptions="StartAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <!--  NEWS TITLE  -->
+                                <StackLayout>
+                                    <Label
+                                        mvx:Bi.nd="Text Title"
+                                        FontAttributes="Bold"
+                                        FontSize="Subtitle" />
+                                </StackLayout>
+                                <!--  NEWS AUTHOR  -->
+                                <Label
+                                    Grid.Row="1"
+                                    Margin="0,0,0,8"
+                                    FontSize="Caption"
+                                    Text="{Binding SubTitle}" />
+                            </Grid>
+
+                        </Grid>
+                    </ViewCell>
+
+                </DataTemplate>
+            </views:MvxListView.ItemTemplate>
+        </views:MvxListView>
+    </ContentPage.Content>
+
+</views:MvxContentPage>

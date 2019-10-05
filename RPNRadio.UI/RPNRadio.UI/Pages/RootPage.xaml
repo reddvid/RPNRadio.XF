@@ -5,25 +5,18 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:local="clr-namespace:RPNRadio.UI;assembly=RPNRadio.UI"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
     xmlns:viewModels="clr-namespace:RPNRadio.Core.ViewModels;assembly=RPNRadio.Core"
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    Title="Root"
     x:TypeArguments="viewModels:RootViewModel"
     mc:Ignorable="d">
-    <!--  Pages can be added as references or inline  -->
-    <ContentPage Title="Tab 1" />
-    <ContentPage Title="Tab 2" />
-    <ContentPage Title="Tab 3" />
 
-    <NavigationPage.TitleView>
-        <StackLayout
-            HeightRequest="30"
-            HorizontalOptions="Center"
-            Orientation="Horizontal"
-            Spacing="10"
-            VerticalOptions="Center">
-            <Label Text="Hola!" />
-        </StackLayout>
-    </NavigationPage.TitleView>
+    <local:Pages.TuneInPage />
+    <local:Pages.NewsFeedPage />
+    <local:Pages.AboutPage />
+
+
 </views:MvxTabbedPage>

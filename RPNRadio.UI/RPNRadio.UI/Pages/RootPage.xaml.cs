@@ -18,11 +18,28 @@ namespace RPNRadio.UI.Pages
     [MvxTabbedPagePresentation(TabbedPosition.Root, WrapInNavigationPage = true)]
     public partial class RootPage : MvxTabbedPage<RootViewModel>
     {
-         public RootPage()
+        public RootPage()
         {
             On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
 
             InitializeComponent();
+        }
+
+        private bool _firstTime = true;
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (_firstTime)
+            {
+                ViewModel.ShowInitialViewModelsCommand.ExecuteAsync();
+                _firstTime = false;
+            }
+        }
+
+        protected override void OnViewModelSet()
+        {
+            base.OnViewModelSet();
         }
     }
 }

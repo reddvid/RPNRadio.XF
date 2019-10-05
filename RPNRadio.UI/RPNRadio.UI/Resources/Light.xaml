@@ -5,4 +5,12 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d" />
+    mc:Ignorable="d">
+
+    <Color x:Key="Primary">#D90D1E</Color>
+    <Color x:Key="Secondary">#D9414E</Color>
+    <Color x:Key="Tertiary">#F27983</Color>
+    <Color x:Key="Quaternary">#F2BDC1</Color>
+    <Color x:Key="Quinary">#F2F2F2</Color>
+
+</ResourceDictionary>
