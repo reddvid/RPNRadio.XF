@@ -1,5 +1,4 @@
-﻿using MediaManager;
-using MvvmCross;
+﻿using MvvmCross;
 using MvvmCross.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -11,7 +10,7 @@ namespace RPNRadio.Core
     {
         public override void Initialize()
         {
-            Mvx.IoCProvider.RegisterSingleton<IMediaManager>(CrossMediaManager.Current);
+            //Mvx.IoCProvider.RegisterSingleton<IMediaManager>(CrossMediaManager.Current);
 
             //FFImageLoading.ImageService.Instance.Initialize();
 
