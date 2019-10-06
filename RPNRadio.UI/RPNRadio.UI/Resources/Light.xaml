@@ -13,4 +13,6 @@
     <Color x:Key="Quaternary">#F2BDC1</Color>
     <Color x:Key="Quinary">#F2F2F2</Color>
 
+    <Color x:Key="TextColor">#F2F2F2</Color>
+
 </ResourceDictionary>

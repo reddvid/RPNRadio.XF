@@ -19,7 +19,7 @@ namespace RPNRadio.Core.ViewModels
 
         public NewsFeedViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService) : base(logProvider, navigationService)
         {
-
+            Title = "News Feed";
         }
 
         public MvxObservableCollection<NewsItem> NewsItems { get; set; } = new MvxObservableCollection<NewsItem>();
@@ -43,13 +43,12 @@ namespace RPNRadio.Core.ViewModels
 
             await ReloadNews();
 
-            Title = "News Feed";
-
             IsLoading = false;
         }
 
         public override void ViewAppearing()
         {
+            Title = "News Feed";
 
             base.ViewAppearing();
         }

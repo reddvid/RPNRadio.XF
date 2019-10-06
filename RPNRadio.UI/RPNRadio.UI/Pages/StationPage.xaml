@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage
+    x:Class="RPNRadio.UI.Pages.StationPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:pan="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:viewModels="clr-namespace:RPNRadio.Core.ViewModels;assembly=RPNRadio.Core"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    x:TypeArguments="viewModels:PlayerViewModel"
+    NavigationPage.HasNavigationBar="True"
+    mc:Ignorable="d">
+    <!--<NavigationPage.TitleView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="23" />
+                <RowDefinition Height="23" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="56" />
+            </Grid.ColumnDefinitions>
+            <ImageButton
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                Grid.Column="1"
+                mvx:Bi.nd="Command BackCommand"
+                BackgroundColor="Transparent"
+                HorizontalOptions="Center"
+                Source="baseline_close_24"
+                VerticalOptions="Center" />
+        </Grid>
+    </NavigationPage.TitleView>-->
+    <ContentPage.Content>
+        <pan:PancakeView
+            Grid.Row="1"
+            BackgroundGradientAngle="20"
+            BackgroundGradientEndColor="{DynamicResource Secondary}"
+            BackgroundGradientStartColor="{DynamicResource Primary}">
+            <Label Text="Controls" />
+        </pan:PancakeView>
+
+    </ContentPage.Content>
+</views:MvxContentPage>

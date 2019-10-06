@@ -57,14 +57,16 @@
                                     <Label
                                         mvx:Bi.nd="Text Title"
                                         FontAttributes="Bold"
-                                        FontSize="Subtitle" />
+                                        FontSize="Subtitle"
+                                        TextColor="#EEE" />
                                 </StackLayout>
                                 <!--  NEWS AUTHOR  -->
                                 <Label
                                     Grid.Row="1"
                                     Margin="0,0,0,8"
                                     FontSize="Caption"
-                                    Text="{Binding SubTitle}" />
+                                    Text="{Binding SubTitle}"
+                                    TextColor="{DynamicResource Secondary}" />
                             </Grid>
 
                         </Grid>

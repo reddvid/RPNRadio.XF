@@ -27,6 +27,7 @@ namespace RPNRadio.UI.Pages
             IconImageSource = ImageSource.FromFile("baseline_ballot_24");
             base.OnAppearing();
         }
+
         protected override void OnDisappearing()
         {
             IconImageSource = ImageSource.FromFile("outline_ballot_24");

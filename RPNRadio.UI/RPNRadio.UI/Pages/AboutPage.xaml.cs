@@ -33,5 +33,14 @@ namespace RPNRadio.UI.Pages
             base.OnDisappearing();
         }
 
+        private async void OpenTwitter_Tapped(object sender, EventArgs e)
+        {
+            await ViewModel.FollowCommand.ExecuteAsync();
+        }
+
+        private void Report_Tapped(object sender, EventArgs e)
+        {
+            ViewModel.ReportCommand.Execute();
+        }
     }
 }

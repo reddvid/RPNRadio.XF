@@ -21,9 +21,9 @@ namespace RPNRadio.Core.ViewModels
         public virtual IMvxAsyncCommand BackCommand => new MvxAsyncCommand(async () => await NavigationService.Close(this));
 
         private string _title;
-        public virtual string Title
+        public string Title
         {
-            get => _title;
+            get => _title ?? "RPN News & Radio";
             set => SetProperty(ref _title, value);
         }
 

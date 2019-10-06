@@ -6,12 +6,43 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:pan="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:viewModels="clr-namespace:RPNRadio.Core.ViewModels;assembly=RPNRadio.Core"
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     Title="Tune In"
     x:TypeArguments="viewModels:TuneInViewModel"
     mc:Ignorable="d">
-    <Grid>
-        <Label Text="Hola amigo!" />
-    </Grid>
+    <ContentPage.Resources>
+        <DataTemplate x:Key="MediaItemTemplate">
+            <ViewCell>
+                <Label Margin="25,15" mvx:Bi.nd="Text Title" />
+            </ViewCell>
+        </DataTemplate>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+            <CollectionView x:Name="PlaylistItems"
+                            mvx:Bi.nd="
+                                ItemsSource CurrentPlaylistSource.MediaItems;
+                                SelectionChangedCommand PlayerCommand;
+                                SelectionChangedCommandParameter SelectedMediaItem;
+                                SelectedItem SelectedMediaItem"
+                            SelectionMode="Single"
+                            VerticalOptions="FillAndExpand"
+                            ItemTemplate="{StaticResource MediaItemTemplate}"/>
+
+            <pan:PancakeView
+                Grid.Row="1"
+                BackgroundGradientAngle="20"
+                BackgroundGradientEndColor="{DynamicResource Secondary}"
+                BackgroundGradientStartColor="{DynamicResource Primary}">
+                <Label Text="Controls" />
+            </pan:PancakeView>
+        </Grid>
+    </ContentPage.Content>
 </views:MvxContentPage>

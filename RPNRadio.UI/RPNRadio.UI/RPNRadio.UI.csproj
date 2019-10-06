@@ -32,6 +32,9 @@
     <Compile Update="Pages\NewsFeedPage.xaml.cs">
       <DependentUpon>NewsFeedPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Pages\StationPage.xaml.cs">
+      <DependentUpon>StationPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

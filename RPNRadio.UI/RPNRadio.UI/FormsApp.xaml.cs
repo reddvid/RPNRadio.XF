@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RPNRadio.UI.Resources;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,6 +10,10 @@ namespace RPNRadio.UI
         public FormsApp()
         {
             InitializeComponent();
+
+            var style = new Styles();
+            style.MergedDictionaries.Add(new Light());
+            Resources = style;
 
             //MainPage = new MainPage();
         }

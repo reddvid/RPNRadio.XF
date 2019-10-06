@@ -11,7 +11,286 @@
     Title="About"
     x:TypeArguments="viewModels:AboutViewModel"
     mc:Ignorable="d">
-    <Grid>
-        <Label Text="Hola amigo!" />
-    </Grid>
+    <ContentPage.Resources>
+        <Style TargetType="Label">
+            <!--<Setter Property="FontFamily" Value="DMSans.ttf#DM Sans" />-->
+            <!--<Setter Property="TextColor" Value="#DD0C1F" />-->
+        </Style>
+
+        <Style x:Key="LinkLabel" TargetType="Label">
+            <!--<Setter Property="FontFamily" Value="DMSans.ttf#DM Sans" />-->
+            <Setter Property="Margin" Value="0,5" />
+        </Style>
+
+        <Style TargetType="Span">
+            <Setter Property="TextDecorations" Value="None" />
+        </Style>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Padding="20,0">
+
+                <Label
+                    x:Name="lblVersion"
+                    FontSize="Small"
+                    Text="version 1.0"
+                    VerticalOptions="Center" />
+
+                <TableView
+                    Margin="-20,0"
+                    BackgroundColor="Transparent"
+                    HasUnevenRows="True">
+                    <TableRoot>
+                        <TableSection>
+                            <ViewCell Tapped="OpenTwitter_Tapped">
+                                <Grid Margin="20,15">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="Follow me on Twitter" />
+                                    <Image
+                                        Grid.Column="1"
+                                        BackgroundColor="Transparent"
+                                        HorizontalOptions="End"
+                                        Source="outline_chevron_right_24" />
+                                </Grid>
+                            </ViewCell>
+                            <ViewCell Tapped="Report_Tapped">
+                                <Grid Margin="20,15">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="Report a problem" />
+                                    <Image
+                                        Grid.Column="1"
+                                        BackgroundColor="Transparent"
+                                        HorizontalOptions="End"
+                                        Source="outline_chevron_right_24" />
+                                </Grid>
+                            </ViewCell>
+                            <ViewCell>
+                                <Grid Margin="20,15">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout>
+
+                                        <Label
+                                            Grid.Column="0"
+                                            Margin="0,20,0,10"
+                                            FontAttributes="Bold"
+                                            FontSize="Medium"
+                                            Text="Credits" />
+                                        <Label IsVisible="False" Style="{DynamicResource LinkLabel}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Hero image by " />
+                                                    <Span Text="Matthieu A" TextColor="#dd0c1f">
+                                                        <Span.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding OpenLinkCommand}" CommandParameter="https://unsplash.com/@innov8" />
+                                                        </Span.GestureRecognizers>
+                                                    </Span>
+                                                    <Span Text=" on Unsplash" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label Style="{DynamicResource LinkLabel}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="RSS Feed logic from " />
+                                                    <Span Text="James Montemagno" TextColor="#dd0c1f">
+                                                        <Span.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding OpenLinkCommand}" CommandParameter="https://github.com/jamesmontemagno" />
+                                                        </Span.GestureRecognizers>
+                                                    </Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label Style="{DynamicResource LinkLabel}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="RPN Inc." TextColor="#dd0c1f">
+                                                        <Span.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding OpenLinkCommand}" CommandParameter="https://rpnradio.com/" />
+                                                        </Span.GestureRecognizers>
+                                                    </Span>
+                                                    <Span Text=" for RSS and audio stream. (" />
+                                                    <Span Text="Facebook" TextColor="#dd0c1f">
+                                                        <Span.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding OpenLinkCommand}" CommandParameter="https://facebook.com/rpnradio/" />
+                                                        </Span.GestureRecognizers>
+                                                    </Span>
+                                                    <Span Text=", " />
+                                                    <Span Text="Twitter" TextColor="#dd0c1f">
+                                                        <Span.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding OpenLinkCommand}" CommandParameter="https://twitter.com/rpn_radio/" />
+                                                        </Span.GestureRecognizers>
+                                                    </Span>
+                                                    <Span Text=")" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label Style="{DynamicResource LinkLabel}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Material icons from" />
+                                                    <Span Text=" Roman Nurik " TextColor="#dd0c1f">
+                                                        <Span.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding OpenLinkCommand}" CommandParameter="https://twitter.com/romannurik" />
+                                                        </Span.GestureRecognizers>
+                                                    </Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label Style="{DynamicResource LinkLabel}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="HtmlAgilityPack" TextColor="#dd0c1f">
+                                                        <Span.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding OpenLinkCommand}" CommandParameter="https://html-agility-pack.net/" />
+                                                        </Span.GestureRecognizers>
+                                                    </Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label Style="{DynamicResource LinkLabel}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Plugin.MediaManager" TextColor="#dd0c1f">
+                                                        <Span.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding OpenLinkCommand}" CommandParameter="https://github.com/martijn00/XamarinMediaManager" />
+                                                        </Span.GestureRecognizers>
+                                                    </Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <Label Style="{DynamicResource LinkLabel}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="MvvmCross" TextColor="#dd0c1f">
+                                                        <Span.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding OpenLinkCommand}" CommandParameter="https://www.mvvmcross.com/" />
+                                                        </Span.GestureRecognizers>
+                                                    </Span>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+
+                                        <Label
+                                            Margin="0,20,0,10"
+                                            FontSize="Micro"
+                                            HorizontalOptions="Center"
+                                            Text="Made with ♥ using Xamarin Forms"
+                                            VerticalOptions="End" />
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </TableSection>
+                    </TableRoot>
+                </TableView>
+
+
+                <Label Style="{DynamicResource LinkLabel}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span
+                                Text="Like us on Facebook"
+                                TextColor="#dd0c1f"
+                                TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ClickCommand}" CommandParameter="https://facebook.com/reddvidapps/" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Style="{DynamicResource LinkLabel}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Follow me on Twitter" TextColor="#dd0c1f">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ClickCommand}" CommandParameter="https://twitter.com/reddvid/" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label Style="{DynamicResource LinkLabel}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Report an app problem" TextColor="#dd0c1f">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ClickCommand}" CommandParameter="mailto:feedback@reddvid.xyz?SUBJECT=[FEEDBACK - RPN Radio for Android]" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <!--<Label
+                    Margin="0,20,0,0"
+                    FontAttributes="Bold"
+                    FontFamily="DMSans"
+                    FontSize="Subtitle"
+                    Text="Donate"
+                    TextColor="Black" />
+                <Label
+                    Margin="0,5"
+                    FontFamily="DMSans"
+                    FontSize="Medium"
+                    HorizontalOptions="Start"
+                    TextColor="Black">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="by PayPal" TextColor="#dd0c1f">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ClickCommand}" CommandParameter="https://paypal.me/reddvid/" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label
+                    Margin="0,5"
+                    FontFamily="DMSans"
+                    FontSize="Medium"
+                    HorizontalOptions="Start"
+                    TextColor="Black">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="by Bitcoin (3G4ioUhRb6oLSKJwC11FQVn2KwF8knkJAa)" TextColor="#dd0c1f">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding CopyCommand}" CommandParameter="3G4ioUhRb6oLSKJwC11FQVn2KwF8knkJAa" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>-->
+
+                <BoxView
+                    Margin="0,20"
+                    BackgroundColor="Gray"
+                    HeightRequest="1" />
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Title"
+                    Text="Credits" />
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
 </views:MvxContentPage>

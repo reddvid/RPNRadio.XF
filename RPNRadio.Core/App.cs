@@ -3,6 +3,7 @@ using MvvmCross;
 using MvvmCross.IoC;
 using MvvmCross.Localization;
 using MvvmCross.ViewModels;
+using RPNRadio.Core.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,11 +15,7 @@ namespace RPNRadio.Core
         public override void Initialize()
         {
             Mvx.IoCProvider.RegisterSingleton<IMediaManager>(CrossMediaManager.Current);
-
-            //// Register Text provider
-            //var textProviderBuilder = new TextProviderBuilder();
-            //Mvx.IoCProvider.RegisterSingleton<IMvxTextProviderBuilder>(textProviderBuilder);
-            //Mvx.IoCProvider.RegisterSingleton<IMvxTextProvider>(textProviderBuilder.TextProvider);
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IBrowseService, BrowseService>();
 
             CreatableTypes()
                 .EndingWith("Service")
