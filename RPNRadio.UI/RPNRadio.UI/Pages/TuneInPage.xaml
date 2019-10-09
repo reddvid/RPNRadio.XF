@@ -3,8 +3,10 @@
     x:Class="RPNRadio.UI.Pages.TuneInPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:c="clr-namespace:RPNRadio.UI.Views"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mm="clr-namespace:MediaManager.Forms;assembly=MediaManager.Forms"
     xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
     xmlns:pan="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:viewModels="clr-namespace:RPNRadio.Core.ViewModels;assembly=RPNRadio.Core"
@@ -15,34 +17,65 @@
     <ContentPage.Resources>
         <DataTemplate x:Key="MediaItemTemplate">
             <ViewCell>
-                <Label Margin="25,15" mvx:Bi.nd="Text Title" />
+                <Label
+                    Margin="25,15"
+                    mvx:Bi.nd="Text Title"
+                    FontAttributes="Bold"
+                    FontSize="14" />
             </ViewCell>
         </DataTemplate>
     </ContentPage.Resources>
-    
+
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
-                <RowDefinition Height="60" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="20" />
             </Grid.RowDefinitions>
-            <CollectionView x:Name="PlaylistItems"
-                            mvx:Bi.nd="
-                                ItemsSource CurrentPlaylistSource.MediaItems;
-                                SelectionChangedCommand PlayerCommand;
-                                SelectionChangedCommandParameter SelectedMediaItem;
-                                SelectedItem SelectedMediaItem"
-                            SelectionMode="Single"
-                            VerticalOptions="FillAndExpand"
-                            ItemTemplate="{StaticResource MediaItemTemplate}"/>
 
-            <pan:PancakeView
-                Grid.Row="1"
-                BackgroundGradientAngle="20"
-                BackgroundGradientEndColor="{DynamicResource Secondary}"
-                BackgroundGradientStartColor="{DynamicResource Primary}">
-                <Label Text="Controls" />
-            </pan:PancakeView>
+            <mm:VideoView mvx:Bi.nd="Source Source" IsVisible="False" />
+            <views:MvxListView
+                HasUnevenRows="True"
+                ItemClick="{mvx:MvxBind PlayerCommand}"
+                ItemTemplate="{StaticResource MediaItemTemplate}"
+                ItemsSource="{mvx:MvxBind RecentlyPlayedItems}"
+                SelectedItem="{Binding SelectedMediaItem, Mode=TwoWay}"
+                SelectionMode="Single"
+                SeparatorColor="DarkGray"
+                SeparatorVisibility="Default" />
+
+            <Grid Grid.Row="1" IsVisible="{Binding IsPlaying}">
+                <Grid.RowDefinitions>
+                    <RowDefinition x:Name="Controls" Height="48" />
+                    <RowDefinition x:Name="MediaInfo" Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Grid.Row="1"
+                    Grid.ColumnSpan="3"
+                    FontAttributes="Bold"
+                    FontSize="14"
+                    HorizontalTextAlignment="Center"
+                    LineBreakMode="TailTruncation"
+                    Text="{Binding CurrentStation}"
+                    TextColor="{DynamicResource Primary}" />
+
+                <ImageButton
+                    Grid.Column="1"
+                    mvx:Bi.nd="Command PlayPauseCommand; Source PlayPauseImage"
+                    Aspect="AspectFit"
+                    BackgroundColor="Transparent"
+                    HeightRequest="60"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="60" />
+            </Grid>
         </Grid>
     </ContentPage.Content>
 </views:MvxContentPage>

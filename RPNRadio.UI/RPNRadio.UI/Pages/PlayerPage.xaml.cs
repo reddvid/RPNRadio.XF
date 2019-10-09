@@ -14,9 +14,9 @@ using Xamarin.Forms.Xaml;
 namespace RPNRadio.UI.Pages
 {
     [DesignTimeVisible(false)]
-    public partial class StationPage : MvxContentPage<PlayerViewModel>
+    public partial class PlayerPage : MvxContentPage<PlayerViewModel>
     {
-        public StationPage()
+        public PlayerPage()
         {
             InitializeComponent();
         }

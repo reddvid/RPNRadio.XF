@@ -6,6 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AppCenter" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="2.1.1" />
     <PackageReference Include="MvvmCross" Version="6.4.1" />
     <PackageReference Include="MvvmCross.Forms" Version="6.4.1" />
     <PackageReference Include="Plugin.MediaManager.Forms" Version="0.8.11" />
@@ -32,8 +35,8 @@
     <Compile Update="Pages\NewsFeedPage.xaml.cs">
       <DependentUpon>NewsFeedPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Pages\StationPage.xaml.cs">
-      <DependentUpon>StationPage.xaml</DependentUpon>
+    <Compile Update="Pages\PlayerPage.xaml.cs">
+      <DependentUpon>PlayerPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -48,6 +51,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Styles.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AdMobView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ControlsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

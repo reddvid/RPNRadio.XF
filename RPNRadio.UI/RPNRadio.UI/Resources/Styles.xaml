@@ -8,12 +8,11 @@
         <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
         <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
         <Setter Property="BorderColor" Value="{DynamicResource SecondaryColor}" />
-        <Setter Property="BorderRadius" Value="25" />
+        <Setter Property="BorderRadius" Value="23" />
         <Setter Property="BorderWidth" Value="1" />
         <Setter Property="CornerRadius" Value="20" />
-        <Setter Property="FontFamily" Value="FiraSans#600" />
-        <Setter Property="FontSize" Value="{DynamicResource SmallTextSize}" />
-        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="FontSize" Value="Caption" />
+        <Setter Property="HeightRequest" Value="46" />
     </Style>
-    
+
 </ResourceDictionary>

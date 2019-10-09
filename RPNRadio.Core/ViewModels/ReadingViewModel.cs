@@ -45,7 +45,9 @@ namespace RPNRadio.Core.ViewModels
             await Share.RequestAsync(new ShareTextRequest
             {
                 Uri = Source.Link,
-                Title = "Share " + Source.Author
+                Title = "Share " + Source.Author,
+                Text = "This news post was shared from RPN News & Radio app",
+                Subject = "Latest from " + Source.Author
             });
         }
     }

@@ -31,12 +31,15 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidLinkMode>None</AndroidLinkMode>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <AotAssemblies>false</AotAssemblies>
     <EnableLLVM>false</EnableLLVM>
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
     <BundleAssemblies>false</BundleAssemblies>
     <AndroidDexTool>d8</AndroidDexTool>
+    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
+    <AndroidLinkSkip>
+    </AndroidLinkSkip>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,6 +50,26 @@
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
+    <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+    <BundleAssemblies>false</BundleAssemblies>
+    <MandroidI18n />
+    <JavaMaximumHeapSize>1G</JavaMaximumHeapSize>
+    <AndroidDexTool>d8</AndroidDexTool>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <AndroidEnableMultiDex>false</AndroidEnableMultiDex>
+    <AndroidPackageFormat>aab</AndroidPackageFormat>
+    <AndroidUseAapt2>True</AndroidUseAapt2>
+    <AndroidUseApkSigner>False</AndroidUseApkSigner>
+    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AndroidKeyStore>True</AndroidKeyStore>
+    <AndroidSigningKeyStore>reddvid.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>@Reddavid0-</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>reddvid</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>@Reddavid0-</AndroidSigningKeyPass>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
@@ -59,6 +82,12 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.AppCenter.Analytics">
+      <Version>2.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AppCenter.Crashes">
+      <Version>2.1.1</Version>
+    </PackageReference>
     <PackageReference Include="MvvmCross">
       <Version>6.4.1</Version>
     </PackageReference>
@@ -101,15 +130,22 @@
     <PackageReference Include="Xamarin.Forms.PancakeView">
       <Version>1.2.1</Version>
     </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Ads.Lite">
+      <Version>71.1720.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LinkerPleaseInclude.cs" />
+    <Compile Include="Renderers\AdMobRenderer.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Renderers\ColoredTableViewRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setup.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\DMSans.ttf" />
+    <None Include="reddvid.keystore" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
@@ -973,6 +1009,57 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxxhdpi\baseline_close_black_48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\rpnxlogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\dxko_cdo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\dxks_surigao.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\dxkt_davao.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\dxxx_zamboanga.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\dykb_bacolod.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\dykc_cebu.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\dzbs_baguio.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\dzki_iriga.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\dzrl_batac.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\dxdx_gensan.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\dxkd_dipolog.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\puase_button_120.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\play_button_60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\play_button_120.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\puase_button_60.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

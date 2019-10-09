@@ -3,14 +3,31 @@
     x:Class="RPNRadio.UI.Pages.ReadingPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:c="clr-namespace:RPNRadio.UI.Views"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:pan="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:viewModels="clr-namespace:RPNRadio.Core.ViewModels;assembly=RPNRadio.Core"
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     x:TypeArguments="viewModels:ReadingViewModel"
     NavigationPage.HasNavigationBar="True"
     mc:Ignorable="d">
+
+    <NavigationPage.TitleView>
+        <StackLayout>
+            <Label
+                x:Name="title"
+                FontAttributes="Bold"
+                FontSize="Body"
+                LineBreakMode="TailTruncation" />
+            <Label
+                x:Name="subtitle"
+                Margin="0,-5,0,0"
+                FontSize="Caption"
+                TextColor="{DynamicResource Primary}" />
+        </StackLayout>
+    </NavigationPage.TitleView>
 
     <ContentPage.ToolbarItems>
         <ToolbarItem
@@ -29,23 +46,23 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <ScrollView>
+            <ScrollView Scrolled="ScrollView_Scrolled">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
+                        <RowDefinition x:Name="titleRow" Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
                     <Image
-                        Grid.RowSpan="3"
+                        Grid.Row="2"
                         mvx:Bi.nd="Source Source.ImagePath"
                         Aspect="AspectFill"
                         HeightRequest="200"
                         Opacity="0.3" />
                     <Image
-                        Grid.RowSpan="3"
+                        Grid.Row="2"
                         mvx:Bi.nd="Source Source.ImagePath"
                         Aspect="AspectFit"
                         HorizontalOptions="FillAndExpand"
@@ -57,33 +74,40 @@
                     <BoxView
                         Grid.Row="1"
                         Grid.RowSpan="2"
-                        BackgroundColor="#AADEDEDE" />
+                        BackgroundColor="#AACFCFCF"
+                        IsVisible="False" />
                     <Label
-                        Grid.Row="1"
-                        Margin="20,10,20,0"
+                        Margin="30,10,30,0"
                         mvx:Bi.nd="Text Source.Title"
                         FontAttributes="Bold"
-                        FontSize="20"
-                        HorizontalOptions="Center"
-                        HorizontalTextAlignment="Center"
-                        TextColor="Black"
+                        FontSize="Title"
+                        HorizontalOptions="Start"
+                        HorizontalTextAlignment="Start"
                         VerticalOptions="CenterAndExpand" />
                     <StackLayout
-                        Grid.Row="2"
-                        Margin="0,0,0,10"
-                        HorizontalOptions="Center"
+                        Grid.Row="1"
+                        Margin="30,0,0,10"
+                        HorizontalOptions="Start"
                         Orientation="Horizontal"
                         Spacing="20">
-                        <Label mvx:Bi.nd="Text Source.Author" TextColor="#111111" />
-                        <Label mvx:Bi.nd="Text Source.FormattedDate" TextColor="#111111" />
+                        <Label
+                            mvx:Bi.nd="Text Source.Author"
+                            FontSize="Medium"
+                            TextColor="{DynamicResource Primary}" />
+                        <Label
+                            mvx:Bi.nd="Text Source.FormattedDate"
+                            FontSize="Medium"
+                            TextColor="{DynamicResource Primary}" />
                     </StackLayout>
                     <Label
                         Grid.Row="3"
-                        Margin="30,10,30,0"
-                        mvx:Bi.nd="Text Source.FormattedContent" />
+                        Margin="30,10,30,20"
+                        mvx:Bi.nd="Text Source.FormattedContent"
+                        FontSize="Body" />
                 </Grid>
             </ScrollView>
             <!--  AD  -->
+            <c:AdMobView Grid.Row="1" />
 
         </Grid>
     </ContentPage.Content>

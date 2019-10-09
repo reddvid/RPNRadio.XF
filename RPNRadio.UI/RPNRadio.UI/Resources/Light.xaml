@@ -14,5 +14,9 @@
     <Color x:Key="Quinary">#F2F2F2</Color>
 
     <Color x:Key="TextColor">#F2F2F2</Color>
+    <Color x:Key="Twitter">#1dA1F2</Color>
+    <Color x:Key="Facebook">#4267B2</Color>
+    <Color x:Key="YouTube">#FF0000</Color>
+    <Color x:Key="Base">#424242</Color>
 
 </ResourceDictionary>

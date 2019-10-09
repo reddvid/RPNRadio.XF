@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<core:MvxContentView
+    x:Class="RPNRadio.UI.Views.ControlsView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:core="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mm="clr-namespace:MediaManager.Forms;assembly=MediaManager.Forms"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:viewModels="clr-namespace:RPNRadio.Core.ViewModels;assembly=RPNRadio.Core"
+    x:TypeArguments="viewModels:ControlsViewModel"
+    mc:Ignorable="d">
+    <ContentView.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition x:Name="MediaInfo" Height="Auto" />
+                <RowDefinition x:Name="Controls" Height="48" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer mvx:Bi.nd="Command OpenPlayerCommand" />
+            </Grid.GestureRecognizers>
+
+            <Label
+                Grid.ColumnSpan="3"
+                Margin="0,10"
+                FontAttributes="Bold"
+                FontSize="14"
+                FormattedText="{Binding CurrentStationText}"
+                HorizontalTextAlignment="Center"
+                LineBreakMode="TailTruncation"
+                TextColor="#EEE" />
+
+            <mm:VideoView mvx:Bi.nd="Source Source" IsVisible="False" />
+
+            <ImageButton
+                Grid.Row="1"
+                Grid.Column="1"
+                mvx:Bi.nd="Command PlayPauseCommand; Source PlayPauseImage"
+                Aspect="AspectFit"
+                BackgroundColor="Transparent"
+                HeightRequest="44"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="44" />
+        </Grid>
+    </ContentView.Content>
+</core:MvxContentView>

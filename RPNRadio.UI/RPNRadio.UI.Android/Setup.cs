@@ -19,9 +19,6 @@ namespace RPNRadio.UI.Droid
         protected override void InitializeFirstChance()
         {
             base.InitializeFirstChance();
-            //UserDialogs.Init(() => Mvx.IoCProvider.Resolve<IMvxAndroidCurrentTopActivity>().Activity);
-            //ActionSheetConfig.DefaultAndroidStyleId = Android.Resource.Style.MainTheme_BottomSheet;
-            //Mvx.IoCProvider.RegisterSingleton<HttpMessageHandler>(new AndroidClientHandler());
         }
 
         protected override IEnumerable<Assembly> AndroidViewAssemblies =>

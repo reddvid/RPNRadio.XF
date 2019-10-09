@@ -13,14 +13,14 @@ namespace RPNRadio.Core
     public class App : MvxApplication
     {
         public override void Initialize()
-        {
-            Mvx.IoCProvider.RegisterSingleton<IMediaManager>(CrossMediaManager.Current);
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IBrowseService, BrowseService>();
-
+        {  
             CreatableTypes()
                 .EndingWith("Service")
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
+
+            Mvx.IoCProvider.RegisterSingleton<IMediaManager>(CrossMediaManager.Current);
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IBrowseService, BrowseService>();                     
 
             RegisterCustomAppStart<AppStart>();
 

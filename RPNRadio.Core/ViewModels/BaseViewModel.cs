@@ -60,7 +60,7 @@ namespace RPNRadio.Core.ViewModels
         //    return GetText(key);
         //}
 
-        public IMvxLanguageBinder TextSource => new MvxLanguageBinder(AppSettings.TextProviderNamespace, GetType().Name);
+        //public IMvxLanguageBinder TextSource => new MvxLanguageBinder(AppSettings.TextProviderNamespace, GetType().Name);
 
         private IMvxAsyncCommand<bool> _reloadCommand;
         public IMvxAsyncCommand<bool> ReloadCommand

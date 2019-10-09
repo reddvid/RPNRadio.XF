@@ -25,7 +25,7 @@ namespace RPNRadio.Core.Services
                 new Station("DXDX General Santos", 8952),
                 new Station("DXKS Surigao", 8448),
                 new Station("DXXX Zamboanga", 8452),
-                new Station("Test Station", 9079),
+                //new Station("Test Station", 9079),
             };
 
             IList<IMediaItem> items = new List<IMediaItem>();

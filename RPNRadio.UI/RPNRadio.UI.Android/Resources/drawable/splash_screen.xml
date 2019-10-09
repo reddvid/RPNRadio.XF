@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
   <item>
-    <color android:color="#fff"/>
+    <color android:color="#272727"/>
   </item>
   <item>
     <bitmap
-        android:src="@drawable/rpn_logo"
+        android:src="@drawable/rpnxlogo"
         android:tileMode="disabled"
         android:gravity="center"/>
   </item>
