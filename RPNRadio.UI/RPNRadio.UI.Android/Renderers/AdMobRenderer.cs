@@ -48,10 +48,10 @@ namespace RPNRadio.UI.Droid.Renderers
 
                 var requestbuilder = new AdRequest.Builder();
 
-#if RELEASE
+
                 ad.LoadAd(requestbuilder.Build());
                 e.NewElement.HeightRequest = GetSmartBannerDpHeight();
-#endif
+
 
                 SetNativeControl(ad);
             }

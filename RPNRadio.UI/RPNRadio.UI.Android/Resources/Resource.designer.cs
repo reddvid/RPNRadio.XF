@@ -21890,13 +21890,34 @@ namespace RPNRadio.UI.Droid
 			public const int path_password_strike_through = 2131558512;
 			
 			// aapt resource value: 0x7F0D0071
-			public const int search_menu_title = 2131558513;
+			public const int s1 = 2131558513;
 			
 			// aapt resource value: 0x7F0D0072
-			public const int status_bar_notification_info_overflow = 2131558514;
+			public const int s2 = 2131558514;
 			
 			// aapt resource value: 0x7F0D0073
-			public const int view_scroll_translation_autohide_behavior = 2131558515;
+			public const int s3 = 2131558515;
+			
+			// aapt resource value: 0x7F0D0074
+			public const int s4 = 2131558516;
+			
+			// aapt resource value: 0x7F0D0075
+			public const int s5 = 2131558517;
+			
+			// aapt resource value: 0x7F0D0076
+			public const int s6 = 2131558518;
+			
+			// aapt resource value: 0x7F0D0077
+			public const int s7 = 2131558519;
+			
+			// aapt resource value: 0x7F0D0078
+			public const int search_menu_title = 2131558520;
+			
+			// aapt resource value: 0x7F0D0079
+			public const int status_bar_notification_info_overflow = 2131558521;
+			
+			// aapt resource value: 0x7F0D007A
+			public const int view_scroll_translation_autohide_behavior = 2131558522;
 			
 			static String()
 			{

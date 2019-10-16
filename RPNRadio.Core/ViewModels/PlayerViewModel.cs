@@ -28,6 +28,12 @@ namespace RPNRadio.Core.ViewModels
         {
             MediaManager = mediaManager ?? throw new ArgumentNullException(nameof(mediaManager));
             MediaManager.MediaItemFailed += MediaManager_MediaItemFailed;
+            //MediaManager.MediaItemChanged += MediaManager_MediaItemChanged;
+        }
+
+        private void MediaManager_MediaItemChanged(object sender, MediaManager.Media.MediaItemEventArgs e)
+        {
+            //MediaManager.Notification.Enabled;
         }
 
         private void MediaManager_MediaItemFailed(object sender, MediaManager.Media.MediaItemFailedEventArgs e)

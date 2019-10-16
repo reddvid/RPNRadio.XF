@@ -130,7 +130,7 @@
     <PackageReference Include="Xamarin.Forms.PancakeView">
       <Version>1.2.1</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.GooglePlayServices.Ads.Lite">
+    <PackageReference Include="Xamarin.GooglePlayServices.Ads">
       <Version>71.1720.1</Version>
     </PackageReference>
   </ItemGroup>
