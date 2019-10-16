@@ -1,4 +1,4 @@
-﻿using Android.Widget;
+﻿using Acr.UserDialogs;
 using MediaManager;
 using MediaManager.Library;
 using MvvmCross.Commands;
@@ -23,6 +23,7 @@ namespace RPNRadio.Core.ViewModels
     public class PlayerViewModel : BaseViewModel<IMediaItem>
     {
         public IMediaManager MediaManager { get; }
+        private static IUserDialogs _userDialogs => UserDialogs.Instance;
 
         public PlayerViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IMediaManager mediaManager) : base(logProvider, navigationService)
         {
@@ -38,10 +39,8 @@ namespace RPNRadio.Core.ViewModels
 
         private void MediaManager_MediaItemFailed(object sender, MediaManager.Media.MediaItemFailedEventArgs e)
         {
-            Toast.MakeText(Android.App.Application.Context,
-                $"Failed to load stream. Station may be offline.",
-                ToastLength.Long).Show();
-
+            _userDialogs.Alert($"Failed to load stream, station may be offline. Please try again.");
+           
             Source = null;
         }
 

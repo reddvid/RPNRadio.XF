@@ -16,6 +16,7 @@ using RPNRadio.Core.ViewModels;
 using Xamarin.Forms;
 using Plugin.CurrentActivity;
 using Intent = global::Android.Content.Intent;
+using Acr.UserDialogs;
 
 namespace RPNRadio.UI.Droid
 {
@@ -33,6 +34,7 @@ namespace RPNRadio.UI.Droid
 
             base.OnCreate(savedInstanceState);
 
+            UserDialogs.Init(this);
             CrossMediaManager.Current.Init(this);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
         }
