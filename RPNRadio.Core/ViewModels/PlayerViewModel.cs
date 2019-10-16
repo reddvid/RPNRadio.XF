@@ -35,6 +35,14 @@ namespace RPNRadio.Core.ViewModels
             Toast.MakeText(Android.App.Application.Context,
                 $"Failed to load stream. Station may be offline.",
                 ToastLength.Long).Show();
+
+            Source = null;
+        }
+
+        public override void ViewDisappearing()
+        {
+            MediaManager.MediaItemFailed -= MediaManager_MediaItemFailed;
+            base.ViewDisappearing();
         }
 
         private IMediaItem _source;
@@ -66,13 +74,13 @@ namespace RPNRadio.Core.ViewModels
         public override void Prepare(IMediaItem parameter)
         {
             Source = parameter;
-
+                    
             StationName = parameter.Title;
 
             SetBannerImage();
 
             SetMediaLinks();
-        }
+        }               
 
         private void SetMediaLinks()
         {
@@ -169,11 +177,6 @@ namespace RPNRadio.Core.ViewModels
         public override Task Initialize()
         {
             return base.Initialize();
-        }
-
-        private void ShowHideControls()
-        {
-            ShowControls = !ShowControls;
         }
 
         private async void PlayPause()
