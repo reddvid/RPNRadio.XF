@@ -21,7 +21,7 @@ using Acr.UserDialogs;
 namespace RPNRadio.UI.Droid
 {
     [Activity(Label = "RPN News & Radio", Icon = "@drawable/ic_launcher", Theme = "@style/MainTheme.Launcher", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    [IntentFilter(new[] { Intent.ActionSend, Intent.ActionSendMultiple, Intent.ActionView }, Categories = new[] { Intent.CategoryDefault, Intent.CategoryBrowsable, Intent.CategoryAppMusic }, DataMimeTypes = new[] { "video/*", "audio/*" }, Label = "RPN News & Radio")]
+    //[IntentFilter(new[] { Intent.ActionSend, Intent.ActionSendMultiple, Intent.ActionView }, Categories = new[] { Intent.CategoryDefault, Intent.CategoryBrowsable, Intent.CategoryAppMusic }, DataMimeTypes = new[] { "video/*", "audio/*" }, Label = "RPN News & Radio")]
     public class MainActivity : MvxFormsAppCompatActivity<Setup, Core.App, FormsApp>
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -33,17 +33,18 @@ namespace RPNRadio.UI.Droid
             ToolbarResource = Resource.Layout.Toolbar;
             SetTheme(Resource.Style.MainTheme);
 
-            base.OnCreate(savedInstanceState);
-
             UserDialogs.Init(this);
             CrossMediaManager.Current.Init(this);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            
+            
+            base.OnCreate(savedInstanceState);
         }
 
         protected override void OnResume()
         {
             base.OnResume();
-            HandleIntent();
+            //HandleIntent();
         }
 
         private async void HandleIntent()

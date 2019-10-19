@@ -1,4 +1,5 @@
-﻿using MediaManager;
+﻿using Acr.UserDialogs;
+using MediaManager;
 using MvvmCross;
 using MvvmCross.IoC;
 using MvvmCross.Localization;
@@ -14,13 +15,14 @@ namespace RPNRadio.Core
     {
         public override void Initialize()
         {  
+            Mvx.IoCProvider.RegisterSingleton<IUserDialogs>(UserDialogs.Instance);
+            Mvx.IoCProvider.RegisterSingleton<IMediaManager>(CrossMediaManager.Current);
+            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IBrowseService, BrowseService>();                     
+
             CreatableTypes()
                 .EndingWith("Service")
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
-
-            Mvx.IoCProvider.RegisterSingleton<IMediaManager>(CrossMediaManager.Current);
-            Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IBrowseService, BrowseService>();                     
 
             RegisterCustomAppStart<AppStart>();
 
