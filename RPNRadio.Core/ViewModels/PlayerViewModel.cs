@@ -40,7 +40,7 @@ namespace RPNRadio.Core.ViewModels
         private void MediaManager_MediaItemFailed(object sender, MediaManager.Media.MediaItemFailedEventArgs e)
         {
             _userDialogs.Alert($"Failed to load stream, station may be offline. Please try again.");
-           
+
             Source = null;
         }
 
@@ -79,13 +79,13 @@ namespace RPNRadio.Core.ViewModels
         public override void Prepare(IMediaItem parameter)
         {
             Source = parameter;
-                    
+
             StationName = parameter.Title;
 
             SetBannerImage();
 
             SetMediaLinks();
-        }               
+        }
 
         private void SetMediaLinks()
         {
@@ -190,6 +190,8 @@ namespace RPNRadio.Core.ViewModels
                 PlayPauseImage = ImageSource.FromFile("play_button_120");
             else
                 PlayPauseImage = ImageSource.FromFile("pause_button_120");
+
+            MediaManager.Notification.ShowNavigationControls = false;
 
             await MediaManager.PlayPause();
         }
