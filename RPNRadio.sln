@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPNRadio.Core", "RPNRadio.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPNRadio.UI.Android", "RPNRadio.UI\RPNRadio.UI.Android\RPNRadio.UI.Android.csproj", "{4082750F-ECC2-48FA-8D3B-17282C3561F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RPNRadio.UI", "RPNRadio.UI\RPNRadio.UI\RPNRadio.UI.csproj", "{3B1AEF28-3088-442F-B26D-9501FD28ED4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RPNRadio.UI", "RPNRadio.UI\RPNRadio.UI\RPNRadio.UI.csproj", "{3B1AEF28-3088-442F-B26D-9501FD28ED4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -27,29 +27,27 @@ namespace RPNRadio.UI.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             Forms.SetFlags("CollectionView_Experimental");
-            CrossCurrentActivity.Current.Init(this, savedInstanceState);
 
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
             SetTheme(Resource.Style.MainTheme);
-
+           
             UserDialogs.Init(this);
-            CrossMediaManager.Current.Init(this);
-            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            
-            
+
             base.OnCreate(savedInstanceState);
+            CrossMediaManager.Current.Init(this);
+            CrossCurrentActivity.Current.Init(this, savedInstanceState);
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
         }
 
         protected override void OnResume()
         {
             base.OnResume();
-            //HandleIntent();
         }
 
         private async void HandleIntent()
         {
-            if (await CrossMediaManager.Android.PlayFromIntent(Intent))
+            if (!Intent.Action.Equals("android.intent.action.MAIN"))
             {
                 await Mvx.IoCProvider.Resolve<IMvxNavigationService>().Navigate<PlayerViewModel>();
             }
