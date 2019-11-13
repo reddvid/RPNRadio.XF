@@ -23,6 +23,17 @@ namespace RPNRadio.UI.Pages
 
         protected override void OnAppearing()
         {
+            phoneView.IsVisible = tabletView.IsVisible = false;
+
+            if (Device.Idiom == TargetIdiom.Phone)
+            {
+                phoneView.IsVisible = true;
+            }
+            else if (Device.Idiom == TargetIdiom.Tablet)
+            {
+                tabletView.IsVisible = true;
+            }
+
             base.OnAppearing();
         }
         protected override void OnDisappearing()

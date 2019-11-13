@@ -28,10 +28,63 @@
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
+            <CollectionView
+                x:Name="mCollectionView"
+                mvx:Bi.nd="ItemsSource NewsItems; SelectedItem SelectedNewsItem; SelectionChangedCommand ReadCommand; SelectionChangedCommandParameter SelectedNewsItem"
+                SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,5" Padding="10,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <pan:PancakeView CornerRadius="5">
+                                <Image
+                                    mvx:Bi.nd="Source ThumbPath"
+                                    HeightRequest="100"
+                                    WidthRequest="100" />
+                            </pan:PancakeView>
+                            <Grid
+                                Grid.Column="1"
+                                Margin="5,0,10,0"
+                                HorizontalOptions="StartAndExpand"
+                                VerticalOptions="StartAndExpand">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <!--  NEWS TITLE  -->
+                                <Label
+                                    mvx:Bi.nd="Text Title"
+                                    FontAttributes="Bold"
+                                    FontSize="Body"
+                                    LineBreakMode="TailTruncation"
+                                    MaxLines="3"
+                                    TextColor="#EEE" />
+                                <!--  NEWS AUTHOR  -->
+                                <pan:PancakeView
+                                    Grid.Row="1"
+                                    Margin="0,0,0,10"
+                                    CornerRadius="4"
+                                    HorizontalOptions="Start">
+                                    <Label
+                                        mvx:Bi.nd="Text SubTitle"
+                                        FontSize="Default"
+                                        TextColor="{DynamicResource Secondary}" />
+                                </pan:PancakeView>
+                            </Grid>
+
+                        </Grid>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
             <views:MvxListView
                 HasUnevenRows="True"
                 IsPullToRefreshEnabled="True"
                 IsRefreshing="{Binding IsRefreshing}"
+                IsVisible="False"
                 ItemClick="{mvx:MvxBind ReadCommand}"
                 ItemsSource="{mvx:MvxBind NewsItems}"
                 RefreshCommand="{Binding ReloadNewsCommand}"
@@ -64,7 +117,6 @@
                                         <Label
                                             mvx:Bi.nd="Text Title"
                                             FontAttributes="Bold"
-                                            FontSize="Large"
                                             LineBreakMode="TailTruncation"
                                             MaxLines="3"
                                             TextColor="#EEE" />
@@ -73,7 +125,7 @@
                                     <Label
                                         Grid.Row="1"
                                         Margin="0,0,0,8"
-                                        FontSize="Medium"
+                                        FontSize="Micro"
                                         Text="{Binding SubTitle}"
                                         TextColor="{DynamicResource Secondary}" />
                                 </Grid>

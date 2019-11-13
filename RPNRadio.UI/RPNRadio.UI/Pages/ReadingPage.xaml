@@ -46,7 +46,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <ScrollView Scrolled="ScrollView_Scrolled">
+            <ScrollView x:Name="phoneView" Scrolled="ScrollView_Scrolled">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition x:Name="titleRow" Height="Auto" />
@@ -77,19 +77,56 @@
                         BackgroundColor="#AACFCFCF"
                         IsVisible="False" />
                     <Label
+                        Margin="20,0"
+                        mvx:Bi.nd="Text Source.Title"
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        HorizontalOptions="Start"
+                        HorizontalTextAlignment="Start"
+                        VerticalOptions="CenterAndExpand" />
+                    <StackLayout
+                        Grid.Row="1"
+                        Margin="20,0,0,10"
+                        HorizontalOptions="Start"
+                        Orientation="Horizontal"
+                        Spacing="20">
+                        <Label
+                            mvx:Bi.nd="Text Source.Author"
+                            FontSize="Caption"
+                            TextColor="{DynamicResource Primary}" />
+                        <Label
+                            mvx:Bi.nd="Text Source.FormattedDate"
+                            FontSize="Caption"
+                            TextColor="{DynamicResource Primary}" />
+                    </StackLayout>
+                    <Label
+                        Grid.Row="3"
+                        Margin="20,10"
+                        mvx:Bi.nd="Text Source.FormattedContent"
+                        FontSize="Body"
+                        LineHeight="1.2" />
+                </Grid>
+            </ScrollView>
+            <Grid x:Name="tabletView">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="12" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <StackLayout>
+                    <Label
                         Margin="30,10,30,0"
                         mvx:Bi.nd="Text Source.Title"
                         FontAttributes="Bold"
                         FontSize="Title"
                         HorizontalOptions="Start"
                         HorizontalTextAlignment="Start"
-                        VerticalOptions="CenterAndExpand" />
+                        VerticalOptions="Start" />
                     <StackLayout
                         Grid.Row="1"
                         Margin="30,0,0,10"
                         HorizontalOptions="Start"
-                        Orientation="Horizontal"
-                        Spacing="20">
+                        Orientation="Horizontal">
                         <Label
                             mvx:Bi.nd="Text Source.Author"
                             FontSize="Medium"
@@ -99,13 +136,21 @@
                             FontSize="Medium"
                             TextColor="{DynamicResource Primary}" />
                     </StackLayout>
+                    <Image
+                        Grid.Row="2"
+                        mvx:Bi.nd="Source Source.ImagePath"
+                        Aspect="AspectFit"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand" />
+                </StackLayout>
+                <ScrollView Grid.Column="2">
                     <Label
                         Grid.Row="3"
                         Margin="30,10,30,20"
                         mvx:Bi.nd="Text Source.FormattedContent"
                         FontSize="Body" />
-                </Grid>
-            </ScrollView>
+                </ScrollView>
+            </Grid>
             <!--  AD  -->
             <c:AdMobView Grid.Row="1" />
 

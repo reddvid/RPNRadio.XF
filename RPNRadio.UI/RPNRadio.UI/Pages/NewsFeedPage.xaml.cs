@@ -25,6 +25,16 @@ namespace RPNRadio.UI.Pages
         protected override void OnAppearing()
         {
             IconImageSource = ImageSource.FromFile("baseline_ballot_24");
+
+            if (Device.Idiom == TargetIdiom.Phone)
+            {
+                mCollectionView.ItemsLayout = new ListItemsLayout(ItemsLayoutOrientation.Vertical);
+            }
+            else if (Device.Idiom == TargetIdiom.Tablet)
+            {
+                mCollectionView.ItemsLayout = new GridItemsLayout(2, ItemsLayoutOrientation.Vertical);
+            }
+
             base.OnAppearing();
         }
 
@@ -34,5 +44,11 @@ namespace RPNRadio.UI.Pages
             base.OnDisappearing();
         }
 
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            
+
+            base.OnSizeAllocated(width, height);
+        }
     }
 }

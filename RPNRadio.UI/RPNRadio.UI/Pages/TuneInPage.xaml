@@ -17,11 +17,13 @@
     <ContentPage.Resources>
         <DataTemplate x:Key="MediaItemTemplate">
             <ViewCell>
-                <Label
-                    Margin="25,15"
-                    mvx:Bi.nd="Text Title"
-                    FontAttributes="Bold"
-                    FontSize="14" />
+                <Grid>
+                    <Label
+                        Margin="20,20"
+                        mvx:Bi.nd="Text Title"
+                        FontAttributes="Bold"
+                        FontSize="Body" />
+                </Grid>
             </ViewCell>
         </DataTemplate>
     </ContentPage.Resources>
@@ -42,7 +44,7 @@
                 ItemsSource="{mvx:MvxBind RecentlyPlayedItems}"
                 SelectedItem="{Binding SelectedMediaItem, Mode=TwoWay}"
                 SelectionMode="Single"
-                SeparatorColor="DarkGray"
+                SeparatorColor="#565656"
                 SeparatorVisibility="Default" />
 
             <Grid Grid.Row="1" IsVisible="{Binding IsPlaying}">

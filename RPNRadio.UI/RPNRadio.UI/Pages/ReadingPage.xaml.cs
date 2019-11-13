@@ -31,19 +31,38 @@ namespace RPNRadio.UI.Pages
             //Title = titleRow.Height.Value.ToString();
         }
 
+        protected override void OnAppearing()
+        {
+            phoneView.IsVisible = tabletView.IsVisible = false;
+            if (Device.Idiom == TargetIdiom.Phone)
+            {
+                phoneView.IsVisible = true;
+            }
+            else if (Device.Idiom == TargetIdiom.Tablet)
+            {
+                tabletView.IsVisible = true;
+            }
+
+            base.OnAppearing();
+        }
+
         private void ScrollView_Scrolled(object sender, ScrolledEventArgs e)
         {
             var scrollVal = e.ScrollY;
-            if (scrollVal >= 100)
-            {
-                //Set News Title to Page Title
-                title.Text = ViewModel.Source.Title;
-                subtitle.Text = ViewModel.Source.Author + " ⁃ " + ViewModel.Source.FormattedDate;
-            }
-            else if (scrollVal <= 10)
-            {
-                title.Text = subtitle.Text = string.Empty;
-            }
+            title.Text = ViewModel.Source.Title;
+            subtitle.Text = ViewModel.Source.Author + " ⁃ " + ViewModel.Source.FormattedDate;
+            //if (scrollVal >= 100)
+            //{
+            //    //Set News Title to Page Title
+            //    title.Text = ViewModel.Source.Title;
+            //    subtitle.Text = ViewModel.Source.Author + " ⁃ " + ViewModel.Source.FormattedDate;
+            //}
+            //else if (scrollVal <= 10)
+            //{
+            //    title.Text = subtitle.Text = string.Empty;
+            //}
+
+            title.Opacity = subtitle.Opacity = e.ScrollY / 100;
         }
     }
 }

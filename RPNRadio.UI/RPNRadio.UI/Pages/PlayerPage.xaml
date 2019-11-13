@@ -39,68 +39,136 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="3*" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Image
-                mvx:Bi.nd="Source BannerImage"
-                Aspect="AspectFit"
-                VerticalOptions="Center" />
-            <Grid
-                Grid.Row="1"
-                Margin="20,0"
-                VerticalOptions="CenterAndExpand">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="5*" />
-                    <ColumnDefinition Width="7*" />
-                    <ColumnDefinition Width="5*" />
-                    <ColumnDefinition Width="6*" />
-                </Grid.ColumnDefinitions>
-                <Button
-                    mvx:Bi.nd="Command OpenWebsiteCommand"
-                    BackgroundColor="{DynamicResource Base}"
-                    Style="{DynamicResource PrimaryButton}"
-                    Text="Website" />
-                <Button
-                    Grid.Column="1"
-                    mvx:Bi.nd="Command OpenFacebookCommand"
-                    BackgroundColor="{DynamicResource Facebook}"
-                    Style="{DynamicResource PrimaryButton}"
-                    Text="Facebook" />
-                <Button
-                    Grid.Column="2"
-                    mvx:Bi.nd="Command OpenTwitterCommand"
-                    BackgroundColor="{DynamicResource Twitter}"
-                    Style="{DynamicResource PrimaryButton}"
-                    Text="Twitter" />
-                <Button
-                    Grid.Column="3"
-                    mvx:Bi.nd="Command OpenYouTubeCommand"
-                    BackgroundColor="{DynamicResource YouTube}"
-                    Style="{DynamicResource PrimaryButton}"
-                    Text="YouTube" />
-            </Grid>
-            <mm:VideoView mvx:Bi.nd="Source Source" IsVisible="False" />
-            <pan:PancakeView
-                Grid.Row="2"
-                HeightRequest="160"
-                WidthRequest="160">
-                <ImageButton
-                    Padding="20"
-                    mvx:Bi.nd="Command PlayPauseCommand"
+            <Grid x:Name="phoneView">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="3*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Image
+                    mvx:Bi.nd="Source BannerImage"
                     Aspect="AspectFit"
-                    BackgroundColor="#AAFF0000"
-                    CornerRadius="80"
-                    HeightRequest="120"
-                    HorizontalOptions="Center"
-                    Source="{Binding PlayPauseImage}"
-                    VerticalOptions="Center"
-                    WidthRequest="120" />
-            </pan:PancakeView>
+                    VerticalOptions="Center" />
+                <Grid
+                    Grid.Row="1"
+                    Margin="20,0"
+                    VerticalOptions="CenterAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="7*" />
+                        <ColumnDefinition Width="5*" />
+                        <ColumnDefinition Width="6*" />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        mvx:Bi.nd="Command OpenWebsiteCommand"
+                        BackgroundColor="{DynamicResource Base}"
+                        Style="{DynamicResource PrimaryButton}"
+                        Text="Website" />
+                    <Button
+                        Grid.Column="1"
+                        mvx:Bi.nd="Command OpenFacebookCommand"
+                        BackgroundColor="{DynamicResource Facebook}"
+                        Style="{DynamicResource PrimaryButton}"
+                        Text="Facebook" />
+                    <Button
+                        Grid.Column="2"
+                        mvx:Bi.nd="Command OpenTwitterCommand"
+                        BackgroundColor="{DynamicResource Twitter}"
+                        Style="{DynamicResource PrimaryButton}"
+                        Text="Twitter" />
+                    <Button
+                        Grid.Column="3"
+                        mvx:Bi.nd="Command OpenYouTubeCommand"
+                        BackgroundColor="{DynamicResource YouTube}"
+                        Style="{DynamicResource PrimaryButton}"
+                        Text="YouTube" />
+                </Grid>
+                <mm:VideoView mvx:Bi.nd="Source Source" IsVisible="False" />
+                <pan:PancakeView
+                    Grid.Row="2"
+                    HeightRequest="160"
+                    WidthRequest="160">
+                    <ImageButton
+                        Padding="20"
+                        mvx:Bi.nd="Command PlayPauseCommand"
+                        Aspect="AspectFit"
+                        BackgroundColor="#AAFF0000"
+                        CornerRadius="80"
+                        HeightRequest="120"
+                        HorizontalOptions="Center"
+                        Source="{Binding PlayPauseImage}"
+                        VerticalOptions="Center"
+                        WidthRequest="120" />
+                </pan:PancakeView>
+            </Grid>
+            <Grid x:Name="tabletView">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="12" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Image
+                    mvx:Bi.nd="Source BannerImage"
+                    Aspect="AspectFit"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center" />
+                <Grid Grid.Column="2" Margin="0,0,30,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="10" />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <StackLayout>
+                        <Button
+                            mvx:Bi.nd="Command OpenWebsiteCommand"
+                            BackgroundColor="{DynamicResource Base}"
+                            Style="{DynamicResource PrimaryButton}"
+                            Text="Website" />
+                        <Button
+                            Grid.Column="1"
+                            mvx:Bi.nd="Command OpenFacebookCommand"
+                            BackgroundColor="{DynamicResource Facebook}"
+                            Style="{DynamicResource PrimaryButton}"
+                            Text="Facebook" />
+                        <Button
+                            Grid.Column="2"
+                            mvx:Bi.nd="Command OpenTwitterCommand"
+                            BackgroundColor="{DynamicResource Twitter}"
+                            Style="{DynamicResource PrimaryButton}"
+                            Text="Twitter" />
+                        <Button
+                            Grid.Column="3"
+                            mvx:Bi.nd="Command OpenYouTubeCommand"
+                            BackgroundColor="{DynamicResource YouTube}"
+                            Style="{DynamicResource PrimaryButton}"
+                            Text="YouTube" />
+                    </StackLayout>
+
+                    <pan:PancakeView
+                        Grid.Row="2"
+                        Margin="0,0,30,0"
+                        HeightRequest="160"
+                        WidthRequest="160">
+                        <ImageButton
+                            Padding="20"
+                            mvx:Bi.nd="Command PlayPauseCommand"
+                            Aspect="AspectFit"
+                            BackgroundColor="#AAFF0000"
+                            CornerRadius="80"
+                            HeightRequest="120"
+                            HorizontalOptions="Center"
+                            Source="{Binding PlayPauseImage}"
+                            VerticalOptions="Center"
+                            WidthRequest="120" />
+                    </pan:PancakeView>
+                </Grid>
+            </Grid>
             <!--  AD  -->
-            <c:AdMobView Grid.Row="3" />
+            <c:AdMobView Grid.Row="1" />
         </Grid>
 
     </ContentPage.Content>
