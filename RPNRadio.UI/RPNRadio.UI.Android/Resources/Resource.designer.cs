@@ -22860,16 +22860,16 @@ namespace RPNRadio.UI.Droid
 			public const int outline_share_black_48 = 2131165607;
 			
 			// aapt resource value: 0x7F0701A8
-			public const int play_button_120 = 2131165608;
+			public const int pause_button_60 = 2131165608;
 			
 			// aapt resource value: 0x7F0701A9
-			public const int play_button_60 = 2131165609;
+			public const int play_button_120 = 2131165609;
 			
 			// aapt resource value: 0x7F0701AA
-			public const int puase_button_120 = 2131165610;
+			public const int play_button_60 = 2131165610;
 			
 			// aapt resource value: 0x7F0701AB
-			public const int puase_button_60 = 2131165611;
+			public const int puase_button_120 = 2131165611;
 			
 			// aapt resource value: 0x7F0701AC
 			public const int roundedbg = 2131165612;
