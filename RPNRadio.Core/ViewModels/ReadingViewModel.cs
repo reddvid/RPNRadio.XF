@@ -46,8 +46,8 @@ namespace RPNRadio.Core.ViewModels
             {
                 Uri = Source.Link,
                 Title = "Share " + Source.Author,
-                Text = "This news post was shared from RPN News & Radio app",
-                Subject = "Latest from " + Source.Author
+                Text = String.Format("{0}\n#RPNRadyoRonda #{1}\n\n", Source.Title, Source.Author.Replace(" ", string.Empty)),
+                Subject = "Latest news from " + Source.Author.Replace(" News", string.Empty)
             });
         }
     }

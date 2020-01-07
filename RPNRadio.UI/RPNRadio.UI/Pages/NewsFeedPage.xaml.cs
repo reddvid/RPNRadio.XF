@@ -28,7 +28,7 @@ namespace RPNRadio.UI.Pages
 
             if (Device.Idiom == TargetIdiom.Phone)
             {
-                mCollectionView.ItemsLayout = new ListItemsLayout(ItemsLayoutOrientation.Vertical);
+                mCollectionView.ItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Vertical);
             }
             else if (Device.Idiom == TargetIdiom.Tablet)
             {
