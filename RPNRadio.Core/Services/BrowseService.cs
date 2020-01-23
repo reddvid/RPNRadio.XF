@@ -24,6 +24,7 @@ namespace RPNRadio.Core.Services
                 new Station("DXKD Dipolog", 8481),
                 new Station("DXDX General Santos", 8952),
                 new Station("DXKS Surigao", 8448),
+                new Station("DXKP Pagadian", 8385),
                 new Station("DXXX Zamboanga", 8452),
                 //new Station("Test Station", 9079),
             };
