@@ -51,8 +51,8 @@
                 </Grid.RowDefinitions>
                 <Image
                     mvx:Bi.nd="Source BannerImage"
-                    Aspect="AspectFit"
-                    VerticalOptions="Center" />
+                    Aspect="AspectFit" HorizontalOptions="Fill"
+                    VerticalOptions="FillAndExpand" />
                 <Grid
                     Grid.Row="1"
                     Margin="20,0"
