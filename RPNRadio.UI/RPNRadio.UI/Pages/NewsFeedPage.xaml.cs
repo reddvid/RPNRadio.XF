@@ -28,6 +28,7 @@ namespace RPNRadio.UI.Pages
 
             if (Device.Idiom == TargetIdiom.Phone)
             {
+                mCollectionView.IsVisible = false;
                 mCollectionView.ItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Vertical);
             }
             else if (Device.Idiom == TargetIdiom.Tablet)
@@ -45,9 +46,7 @@ namespace RPNRadio.UI.Pages
         }
 
         protected override void OnSizeAllocated(double width, double height)
-        {
-            
-
+        {            
             base.OnSizeAllocated(width, height);
         }
     }

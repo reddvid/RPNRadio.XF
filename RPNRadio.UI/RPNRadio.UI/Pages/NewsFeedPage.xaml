@@ -28,7 +28,7 @@
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <CollectionView
+            <CollectionView IsVisible="False"
                 x:Name="mCollectionView"
                 mvx:Bi.nd="ItemsSource NewsItems; SelectedItem SelectedNewsItem; SelectionChangedCommand ReadCommand; SelectionChangedCommandParameter SelectedNewsItem"
                 SelectionMode="Single">
@@ -84,7 +84,6 @@
                 HasUnevenRows="True"
                 IsPullToRefreshEnabled="True"
                 IsRefreshing="{Binding IsRefreshing}"
-                IsVisible="False"
                 ItemClick="{mvx:MvxBind ReadCommand}"
                 ItemsSource="{mvx:MvxBind NewsItems}"
                 RefreshCommand="{Binding ReloadNewsCommand}"
