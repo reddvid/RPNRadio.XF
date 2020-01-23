@@ -19,10 +19,9 @@
             <ViewCell>
                 <Grid>
                     <Label
-                        Margin="20,20"
+                        Margin="20,10"
                         mvx:Bi.nd="Text Title"
-                        FontAttributes="Bold"
-                        FontSize="Body" />
+                        FontSize="Small" />
                 </Grid>
             </ViewCell>
         </DataTemplate>
