@@ -148,18 +148,18 @@ namespace RPNRadio.Core.ViewModels
             switch (StationName)
             {
                 case "DXDX General Santos":
-                    BannerImage = ImageSource.FromFile("dxdx_gensan");
+                    BannerImage = "https://rpnradio.com/wp-content/uploads/2020/01/dxdx_gensan.jpg";
                     WebLink = "http://rpnradio.com/dxdx-gensan/";
                     break;
                 case "DXKO Cagayan de Oro":
-                    BannerImage = ImageSource.FromFile("dxko_cdo");
+                    BannerImage = "https://rpnradio.com/wp-content/uploads/2020/01/dxko_cdo.jpg";
                     WebLink = "http://rpnradio.com/dxko-cdo/";
                     break;
                 default:
                     string[] words = StationName.ToLower(new CultureInfo("en-US", false)).Split(' ');
-                    string fileName = string.Join("_", words);
+                    string fileName = string.Join("_", words).ToLower();
                     string web = string.Join("-", words);
-                    BannerImage = ImageSource.FromFile(fileName);
+                    BannerImage = "https://rpnradio.com/wp-content/uploads/2020/01/" + fileName + ".jpg";
                     WebLink = "http://rpnradio.com/" + web + "/";
                     break;
             }
@@ -172,8 +172,8 @@ namespace RPNRadio.Core.ViewModels
             set => SetProperty(ref _stationName, value);
         }
 
-        private ImageSource _bannerImage;
-        public ImageSource BannerImage
+        private string _bannerImage;
+        public string BannerImage
         {
             get => _bannerImage;
             set => SetProperty(ref _bannerImage, value);
