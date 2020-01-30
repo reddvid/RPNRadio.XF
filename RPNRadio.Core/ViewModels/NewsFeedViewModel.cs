@@ -70,7 +70,7 @@ namespace RPNRadio.Core.ViewModels
 
         private async Task ReadNews(NewsItem newsItem)
         {
-            await NavigationService.Navigate<ReadingViewModel, NewsItem>(newsItem);
+            await NavigationService.Navigate<ReadingViewModel, NewsItem>(SelectedNewsItem);
             SelectedNewsItem = null;
         }
 

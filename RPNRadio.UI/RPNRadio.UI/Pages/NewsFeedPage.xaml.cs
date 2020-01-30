@@ -26,15 +26,15 @@ namespace RPNRadio.UI.Pages
         {
             IconImageSource = ImageSource.FromFile("baseline_ballot_24");
 
-            if (Device.Idiom == TargetIdiom.Phone)
-            {
-                mCollectionView.IsVisible = false;
-                mCollectionView.ItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Vertical);
-            }
-            else if (Device.Idiom == TargetIdiom.Tablet)
-            {
-                mCollectionView.ItemsLayout = new GridItemsLayout(2, ItemsLayoutOrientation.Vertical);
-            }
+            //if (Device.Idiom == TargetIdiom.Phone)
+            //{
+            //    mCollectionView.IsVisible = false;
+            //    mCollectionView.ItemsLayout = new LinearItemsLayout(ItemsLayoutOrientation.Vertical);
+            //}
+            //else if (Device.Idiom == TargetIdiom.Tablet)
+            //{
+            //    mCollectionView.ItemsLayout = new GridItemsLayout(2, ItemsLayoutOrientation.Vertical);
+            //}
 
             base.OnAppearing();
         }
