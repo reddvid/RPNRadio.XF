@@ -11,7 +11,7 @@
     xmlns:viewModels="clr-namespace:RPNRadio.Core.ViewModels;assembly=RPNRadio.Core"
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     x:TypeArguments="viewModels:ReadingViewModel"
-    NavigationPage.HasNavigationBar="True"
+    NavigationPage.HasNavigationBar="True" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     mc:Ignorable="d">
 
     <NavigationPage.TitleView>
@@ -55,14 +55,14 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
-                    <Image
+                    <ffimageloading:CachedImage
                         Grid.Row="2"
                         mvx:Bi.nd="Source Source.ImagePath"
                         Aspect="AspectFill"
                         HeightRequest="200"
                         Opacity="0.3" />
-                    <Image
-                        Grid.Row="2"
+                    <ffimageloading:CachedImage
+                        Grid.Row="2" FadeAnimationForCachedImages="True" FadeAnimationEnabled="True"
                         mvx:Bi.nd="Source Source.ImagePath"
                         Aspect="AspectFit"
                         HorizontalOptions="FillAndExpand"
@@ -136,7 +136,7 @@
                             FontSize="Medium"
                             TextColor="{DynamicResource Primary}" />
                     </StackLayout>
-                    <Image
+                    <ffimageloading:CachedImage
                         Grid.Row="2"
                         mvx:Bi.nd="Source Source.ImagePath"
                         Aspect="AspectFit"

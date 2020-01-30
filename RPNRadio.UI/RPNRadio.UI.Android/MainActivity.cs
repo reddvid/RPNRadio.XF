@@ -17,6 +17,7 @@ using Xamarin.Forms;
 using Plugin.CurrentActivity;
 using Intent = global::Android.Content.Intent;
 using Acr.UserDialogs;
+using FFImageLoading.Forms.Platform;
 
 namespace RPNRadio.UI.Droid
 {
@@ -34,10 +35,15 @@ namespace RPNRadio.UI.Droid
            
             UserDialogs.Init(this);
 
+           
             base.OnCreate(savedInstanceState);
             CrossMediaManager.Current.Init(this);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+
+            CachedImageRenderer.Init(true);
+            CachedImageRenderer.InitImageViewHandler();
+
         }
 
         protected override void OnResume()

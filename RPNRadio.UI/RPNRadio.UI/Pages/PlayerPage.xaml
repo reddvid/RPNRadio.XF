@@ -11,7 +11,7 @@
     xmlns:pan="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:viewModels="clr-namespace:RPNRadio.Core.ViewModels;assembly=RPNRadio.Core"
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
-    Title="{mvx:MvxBind StationName}"
+    Title="{mvx:MvxBind StationName}" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     x:TypeArguments="viewModels:PlayerViewModel"
     NavigationPage.HasNavigationBar="True"
     mc:Ignorable="d">
@@ -49,7 +49,7 @@
                     <RowDefinition Height="3*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <Image
+                <ffimageloading:CachedImage
                     mvx:Bi.nd="Source BannerImage"
                     Aspect="AspectFit" HorizontalOptions="Fill"
                     VerticalOptions="FillAndExpand" />
