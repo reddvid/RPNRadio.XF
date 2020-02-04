@@ -111,25 +111,24 @@
                         LineHeight="1.2" />
                     <views:MvxListView
                         Grid.Row="4"
-                        mvx:Bi.nd="ItemsSource Source.ImageUrls"
+                        mvx:Bi.nd="ItemsSource Source.ImageUrls; IsVisible Source.IsVisible"
                         HasUnevenRows="True"
+                        IsEnabled="False"
                         SelectionMode="None"
                         SeparatorVisibility="None"
-                        VerticalOptions="Start"
-                        VerticalScrollBarVisibility="Never">
+                        VerticalOptions="Start">
                         <views:MvxListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <Grid>
-                                        <ffimageloading:CachedImage
-                                            Grid.Row="2"
-                                            Aspect="AspectFit"
-                                            FadeAnimationEnabled="True"
-                                            FadeAnimationForCachedImages="True"
-                                            HorizontalOptions="FillAndExpand"
-                                            Source="{Binding}" />
-                                        <Label HorizontalTextAlignment="Center" Text="{Binding}" />
-                                    </Grid>
+                                    <ffimageloading:CachedImage
+                                        Grid.Row="2"
+                                        Margin="40,10"
+                                        Aspect="AspectFit"
+                                        FadeAnimationEnabled="True"
+                                        FadeAnimationForCachedImages="True"
+                                        HorizontalOptions="FillAndExpand"
+                                        Source="{mvx:MvxBind .}"
+                                        VerticalOptions="FillAndExpand" />
                                 </ViewCell>
                             </DataTemplate>
                         </views:MvxListView.ItemTemplate>

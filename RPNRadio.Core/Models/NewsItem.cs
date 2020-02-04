@@ -1,15 +1,17 @@
 ﻿using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Web;
 
 namespace RPNRadio.Core.Models
 {
-    public class NewsItem
+    public class NewsItem : INotifyPropertyChanged
     {
         public string Id { get; set; }
 
@@ -18,7 +20,16 @@ namespace RPNRadio.Core.Models
 
         public bool IsVisible => ImageUrls.Count() > 0 ? true : false;
 
-        public List<string> ImageUrls { get; set; } = new List<string>();
+        private List<string> _imageUrls;
+        public List<string> ImageUrls
+        {
+            get { return _imageUrls; }
+            set
+            {
+                _imageUrls = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         public string FormattedContent => GetAndParseImportantContent(Content);
 
@@ -63,7 +74,7 @@ namespace RPNRadio.Core.Models
                                 .Select(e => e.GetAttributeValue("src", null))
                                 .Where(s => !String.IsNullOrWhiteSpace(s));
 
-            ImageUrls.Clear();
+            ImageUrls = new List<string>();
             ImageUrls = imgUrls.ToList();
             if (ImageUrls.Count() > 0)
             {
@@ -103,5 +114,17 @@ namespace RPNRadio.Core.Models
         {
             return Title;
         }
+
+        #region NOTIFYPROPERTY
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        // This method is called by the Set accessor of each property.  
+        // The CallerMemberName attribute that is applied to the optional propertyName  
+        // parameter causes the property name of the caller to be substituted as an argument.  
+        private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
     }
 }

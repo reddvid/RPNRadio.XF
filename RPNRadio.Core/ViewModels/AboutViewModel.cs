@@ -28,12 +28,12 @@ namespace RPNRadio.Core.ViewModels
         private IMvxAsyncCommand _followCommand;
         public IMvxAsyncCommand FollowCommand => _followCommand ?? (_followCommand = new MvxAsyncCommand(FollowOnTwitter));
 
-        private IMvxCommand _reportCommand;
-        public IMvxCommand ReportCommand => _reportCommand ?? (_reportCommand = new MvxCommand(ReportProblem));
+        private IMvxAsyncCommand _reportCommand;
+        public IMvxAsyncCommand ReportCommand => _reportCommand ?? (_reportCommand = new MvxAsyncCommand(ReportProblem));
 
-        private void ReportProblem()
+        private async Task ReportProblem()
         {
-            Device.OpenUri(new Uri("mailto:feedback@reddvid.xyz?SUBJECT=[FEEDBACK - RPN News & Radio for Android]"));
+            await Launcher.TryOpenAsync(new Uri("mailto:feedback@reddvid.xyz?SUBJECT=[FEEDBACK - RPN News & Radio for Android]"));
         }
 
         private async Task FollowOnTwitter()
