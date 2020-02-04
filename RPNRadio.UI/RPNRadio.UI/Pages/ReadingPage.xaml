@@ -109,28 +109,28 @@
                         mvx:Bi.nd="Text Source.FormattedContent"
                         FontSize="Body"
                         LineHeight="1.2" />
-                    <CollectionView
-                        x:Name="mCollectionView"
-                        Grid.Row="4"
-                        Margin="0,10"
-                        mvx:Bi.nd="ItemsSource Source.ImageUrls">
-                        <CollectionView.ItemTemplate>
+                    <views:MvxListView
+                        HasUnevenRows="True"
+                        ItemsSource="{mvx:MvxBind Source.ImageUrls}"
+                        SelectionMode="None"
+                        SeparatorVisibility="None">
+                        <views:MvxListView.ItemTemplate>
                             <DataTemplate>
-                                <StackLayout>
-                                    <ffimageloading:CachedImage
-                                        Grid.Row="2"
-                                        Aspect="AspectFit"
-                                        FadeAnimationEnabled="True"
-                                        FadeAnimationForCachedImages="True"
-                                        HorizontalOptions="FillAndExpand"
-                                        Source="{Binding}"
-                                        VerticalOptions="FillAndExpand" />
-                                    <Label HorizontalTextAlignment="Center" Text="{Binding}" />
-                                </StackLayout>
+                                <ViewCell>
+                                    <StackLayout>
+                                        <ffimageloading:CachedImage
+                                            Grid.Row="2"
+                                            Aspect="AspectFit"
+                                            FadeAnimationEnabled="True"
+                                            FadeAnimationForCachedImages="True"
+                                            HorizontalOptions="FillAndExpand"
+                                            Source="{Binding}" />
+                                        <Label HorizontalTextAlignment="Center" Text="{Binding}" />
+                                    </StackLayout>
+                                </ViewCell>
                             </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
-
+                        </views:MvxListView.ItemTemplate>
+                    </views:MvxListView>
                 </Grid>
             </ScrollView>
             <Grid x:Name="tabletView">
