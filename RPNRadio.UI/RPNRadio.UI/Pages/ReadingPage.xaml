@@ -110,6 +110,7 @@
                         FontSize="Body"
                         LineHeight="1.2" />
                     <views:MvxListView
+                        Grid.Row="4"
                         HasUnevenRows="True"
                         ItemsSource="{mvx:MvxBind Source.ImageUrls}"
                         SelectionMode="None"
