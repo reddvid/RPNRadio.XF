@@ -62,6 +62,11 @@ namespace RPNRadio.Core.Models
             foreach (var url in imgUrls)
             {
                 ImageUrls.Add(url);
+
+                if (ImageUrls.Count() != 0)
+                {
+                    ImageUrls.RemoveAt(0);
+                }
             }
 
             return HttpUtility.HtmlDecode(news);
