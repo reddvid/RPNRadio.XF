@@ -121,9 +121,7 @@ namespace RPNRadio.Core.ViewModels
                             Date = (string)item.Element("pubDate"),
                             ImagePath = GetImagePath((string)item.Element("description")).Replace("?resize=150%2c150", string.Empty).Replace("?resize=150%2C150", string.Empty).Replace("-150x150", string.Empty),
                             ThumbPath = GetImagePath((string)item.Element("description"))
-                        }).Take(20).ToList();
-
-               
+                        }).Take(20).ToList();               
             });
         }
 

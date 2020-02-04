@@ -116,15 +116,17 @@
                         mvx:Bi.nd="ItemsSource Source.ImageUrls">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <!--<ffimageloading:CachedImage
-                                    Grid.Row="2"
-                                    Aspect="AspectFit"
-                                    FadeAnimationEnabled="True"
-                                    FadeAnimationForCachedImages="True"
-                                    HorizontalOptions="FillAndExpand"
-                                    Source="{mvx:MvxBind}"
-                                    VerticalOptions="FillAndExpand" />-->
-                                <Label Text="{Binding}" />
+                                <StackLayout>
+                                    <ffimageloading:CachedImage
+                                        Grid.Row="2"
+                                        Aspect="AspectFit"
+                                        FadeAnimationEnabled="True"
+                                        FadeAnimationForCachedImages="True"
+                                        HorizontalOptions="FillAndExpand"
+                                        Source="{Binding}"
+                                        VerticalOptions="FillAndExpand" />
+                                    <Label HorizontalTextAlignment="Center" Text="{Binding}" />
+                                </StackLayout>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
