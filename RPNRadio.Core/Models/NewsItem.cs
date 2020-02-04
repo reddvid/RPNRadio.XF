@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Text;
 using System.Web;
 
@@ -13,6 +14,8 @@ namespace RPNRadio.Core.Models
 
         public string Title { get; set; }
         public string Content { get; set; }
+
+        public List<string> ImageUrls { get; set; } = new List<string>();
 
         public string FormattedContent => GetAndParseImportantContent(Content);
 
@@ -38,8 +41,10 @@ namespace RPNRadio.Core.Models
             var paragraphs = new List<string>();
             foreach (var node in texts)
             {
-                //Getting list of img src value      
-                if (!string.IsNullOrWhiteSpace(node.InnerText)) paragraphs.Add(node.InnerText);
+                if (!string.IsNullOrWhiteSpace(node.InnerText))
+                {
+                    paragraphs.Add(node.InnerText);
+                }
             }
 
             string news = string.Empty;
@@ -48,6 +53,15 @@ namespace RPNRadio.Core.Models
             {
                 news += p;
                 news += "\n\n";
+            }
+
+            // Get image urls
+            var imgUrls = document.DocumentNode.Descendants("img")
+                                .Select(e => e.GetAttributeValue("src", null))
+                                .Where(s => !String.IsNullOrWhiteSpace(s));
+            foreach (var url in imgUrls)
+            {
+                ImageUrls.Add(url);
             }
 
             return HttpUtility.HtmlDecode(news);

@@ -5,13 +5,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:c="clr-namespace:RPNRadio.UI.Views"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
     xmlns:pan="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
     xmlns:viewModels="clr-namespace:RPNRadio.Core.ViewModels;assembly=RPNRadio.Core"
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     x:TypeArguments="viewModels:ReadingViewModel"
-    NavigationPage.HasNavigationBar="True" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    NavigationPage.HasNavigationBar="True"
     mc:Ignorable="d">
 
     <NavigationPage.TitleView>
@@ -53,6 +54,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <ffimageloading:CachedImage
@@ -62,9 +64,11 @@
                         HeightRequest="200"
                         Opacity="0.3" />
                     <ffimageloading:CachedImage
-                        Grid.Row="2" FadeAnimationForCachedImages="True" FadeAnimationEnabled="True"
+                        Grid.Row="2"
                         mvx:Bi.nd="Source Source.ImagePath"
                         Aspect="AspectFit"
+                        FadeAnimationEnabled="True"
+                        FadeAnimationForCachedImages="True"
                         HorizontalOptions="FillAndExpand"
                         VerticalOptions="FillAndExpand" />
                     <!--<Image
@@ -105,6 +109,25 @@
                         mvx:Bi.nd="Text Source.FormattedContent"
                         FontSize="Body"
                         LineHeight="1.2" />
+                    <CollectionView
+                        x:Name="mCollectionView"
+                        Grid.Row="4"
+                        Margin="0,10"
+                        mvx:Bi.nd="Source ImageUrls">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <ffimageloading:CachedImage
+                                    Grid.Row="2"
+                                    Aspect="AspectFit"
+                                    FadeAnimationEnabled="True"
+                                    FadeAnimationForCachedImages="True"
+                                    HorizontalOptions="FillAndExpand"
+                                    Source="{mvx:MvxBind}"
+                                    VerticalOptions="FillAndExpand" />
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
                 </Grid>
             </ScrollView>
             <Grid x:Name="tabletView">

@@ -27,8 +27,6 @@ namespace RPNRadio.UI.Pages
             InitializeComponent();
 
             NavigationPage.SetHasNavigationBar(this, true);
-            //_titleRowHeight = titleRow.Height.Value;
-            //Title = titleRow.Height.Value.ToString();
         }
 
         protected override void OnAppearing()
@@ -51,16 +49,6 @@ namespace RPNRadio.UI.Pages
             var scrollVal = e.ScrollY;
             title.Text = ViewModel.Source.Title;
             subtitle.Text = ViewModel.Source.Author + " ⁃ " + ViewModel.Source.FormattedDate;
-            //if (scrollVal >= 100)
-            //{
-            //    //Set News Title to Page Title
-            //    title.Text = ViewModel.Source.Title;
-            //    subtitle.Text = ViewModel.Source.Author + " ⁃ " + ViewModel.Source.FormattedDate;
-            //}
-            //else if (scrollVal <= 10)
-            //{
-            //    title.Text = subtitle.Text = string.Empty;
-            //}
 
             title.Opacity = subtitle.Opacity = e.ScrollY / 100;
         }
