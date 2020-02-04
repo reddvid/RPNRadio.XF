@@ -1,6 +1,7 @@
 ﻿using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,8 @@ namespace RPNRadio.Core.Models
 
         public string Title { get; set; }
         public string Content { get; set; }
+
+        public bool IsVisible => ImageUrls.Count() > 0 ? true : false;
 
         public List<string> ImageUrls { get; set; } = new List<string>();
 
@@ -59,14 +62,12 @@ namespace RPNRadio.Core.Models
             var imgUrls = document.DocumentNode.Descendants("img")
                                 .Select(e => e.GetAttributeValue("src", null))
                                 .Where(s => !String.IsNullOrWhiteSpace(s));
-            foreach (var url in imgUrls)
-            {
-                ImageUrls.Add(url);
 
-                if (ImageUrls.Count() != 0)
-                {
-                    ImageUrls.RemoveAt(0);
-                }
+            ImageUrls.Clear();
+            ImageUrls = imgUrls.ToList();
+            if (ImageUrls.Count() > 0)
+            {
+                ImageUrls.RemoveAt(0);
             }
 
             return HttpUtility.HtmlDecode(news);
@@ -80,6 +81,23 @@ namespace RPNRadio.Core.Models
 
         public string SubTitle => $"{Author.Replace(" News", string.Empty)}  |  {FormattedDate}";
         public string FormattedDate => DateTime.Parse(Date).ToString("ddd, dd MMM yyyy", CultureInfo.InvariantCulture);
+
+        private string GetImagePath(string text)
+        {
+            string path = string.Empty;
+
+            int _start, _end;
+            string start = "src=\"";
+            string end = "\" class=\"";
+            if (text.Contains(start) && text.Contains(end))
+            {
+                _start = text.IndexOf(start, 0) + start.Length;
+                _end = text.IndexOf(end, _start);
+                path = text.Substring(_start, _end - _start);
+            }
+
+            return path;
+        }
 
         public override string ToString()
         {

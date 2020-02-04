@@ -111,14 +111,16 @@
                         LineHeight="1.2" />
                     <views:MvxListView
                         Grid.Row="4"
+                        mvx:Bi.nd="ItemsSource Source.ImageUrls"
                         HasUnevenRows="True"
-                        ItemsSource="{mvx:MvxBind Source.ImageUrls}"
                         SelectionMode="None"
-                        SeparatorVisibility="None">
+                        SeparatorVisibility="None"
+                        VerticalOptions="Start"
+                        VerticalScrollBarVisibility="Never">
                         <views:MvxListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <StackLayout>
+                                    <Grid>
                                         <ffimageloading:CachedImage
                                             Grid.Row="2"
                                             Aspect="AspectFit"
@@ -127,7 +129,7 @@
                                             HorizontalOptions="FillAndExpand"
                                             Source="{Binding}" />
                                         <Label HorizontalTextAlignment="Center" Text="{Binding}" />
-                                    </StackLayout>
+                                    </Grid>
                                 </ViewCell>
                             </DataTemplate>
                         </views:MvxListView.ItemTemplate>
