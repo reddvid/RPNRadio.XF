@@ -1,4 +1,5 @@
-﻿using MvvmCross.Commands;
+﻿using Acr.UserDialogs;
+using MvvmCross.Commands;
 using MvvmCross.Forms.Views;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
@@ -12,6 +13,7 @@ namespace RPNRadio.Core.ViewModels
 {
     public class RootViewModel : BaseViewModel
     {
+
         public RootViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService) : base(logProvider, navigationService)
         {
             ShowInitialViewModelsCommand = new MvxAsyncCommand(ShowInitialViewModels);

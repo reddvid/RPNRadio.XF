@@ -154,6 +154,7 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\DMSans.ttf" />
+    <AndroidAsset Include="Assets\newspost.db" />
     <None Include="reddvid.keystore" />
     <None Include="reddvid14.keystore" />
     <None Include="Resources\AboutResources.txt" />

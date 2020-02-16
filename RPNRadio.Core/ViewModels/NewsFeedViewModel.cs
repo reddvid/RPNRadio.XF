@@ -1,4 +1,5 @@
-﻿using MvvmCross.Commands;
+﻿using Acr.UserDialogs;
+using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
@@ -36,12 +37,16 @@ namespace RPNRadio.Core.ViewModels
 
         private IMvxAsyncCommand _reloadNewsCommand;
         public IMvxAsyncCommand ReloadNewsCommand => _reloadNewsCommand ?? (_reloadNewsCommand = new MvxAsyncCommand(ReloadNews));
-               
+
+        private static IUserDialogs _userDialogs => UserDialogs.Instance;
+
         public override async Task Initialize()
         {
             IsLoading = true;
 
-            await ReloadNews();
+            var result = ReloadNews().GetAwaiter();
+
+            await _userDialogs.ConfirmAsync(result.ToString());
 
             IsLoading = false;
         }
@@ -70,8 +75,8 @@ namespace RPNRadio.Core.ViewModels
 
         private async Task ReadNews(NewsItem newsItem)
         {
-            await NavigationService.Navigate<ReadingViewModel, NewsItem>(newsItem);
-            SelectedNewsItem = null;
+            await NavigationService.Navigate<ReadingViewModel, NewsItem>(_selectedNewsItem);
+            _selectedNewsItem = null;
         }
 
         private bool _isRefreshing;
@@ -91,6 +96,7 @@ namespace RPNRadio.Core.ViewModels
             XNamespace nsContent = "http://purl.org/rss/1.0/modules/content/";
             var feed = "http://rpnradio.com/category/provincial-news/feed/";
             var responseString = await httpClient.GetStringAsync(feed);
+
             if (responseString != null)
             {
                 NewsItems.Clear();
@@ -104,6 +110,8 @@ namespace RPNRadio.Core.ViewModels
 
             IsLoading = IsRefreshing = false;
         }
+
+
 
         private async Task<List<NewsItem>> ParseFeed(string rss)
         {
@@ -121,9 +129,7 @@ namespace RPNRadio.Core.ViewModels
                             Date = (string)item.Element("pubDate"),
                             ImagePath = GetImagePath((string)item.Element("description")).Replace("?resize=150%2c150", string.Empty).Replace("?resize=150%2C150", string.Empty).Replace("-150x150", string.Empty),
                             ThumbPath = GetImagePath((string)item.Element("description"))
-                        }).Take(35).ToList();
-
-               
+                        }).Take(35).ToList();               
             });
         }
 

@@ -15,8 +15,8 @@ namespace RPNRadio.Core
     {
         public override void Initialize()
         {  
-            Mvx.IoCProvider.RegisterSingleton<IUserDialogs>(UserDialogs.Instance);
-            Mvx.IoCProvider.RegisterSingleton<IMediaManager>(CrossMediaManager.Current);
+            Mvx.IoCProvider.RegisterSingleton(UserDialogs.Instance);
+            Mvx.IoCProvider.RegisterSingleton(CrossMediaManager.Current);
             Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IBrowseService, BrowseService>();                     
 
             CreatableTypes()

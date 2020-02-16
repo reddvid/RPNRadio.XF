@@ -34,7 +34,6 @@ namespace RPNRadio.UI.Droid
             SetTheme(Resource.Style.MainTheme);
            
             UserDialogs.Init(this);
-
            
             base.OnCreate(savedInstanceState);
             CrossMediaManager.Current.Init(this);
@@ -43,11 +42,11 @@ namespace RPNRadio.UI.Droid
 
             CachedImageRenderer.Init(true);
             CachedImageRenderer.InitImageViewHandler();
-
         }
 
         protected override void OnResume()
         {
+            HandleIntent();
             base.OnResume();
         }
 
