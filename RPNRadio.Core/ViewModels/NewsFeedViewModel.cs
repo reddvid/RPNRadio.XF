@@ -42,13 +42,15 @@ namespace RPNRadio.Core.ViewModels
 
         public override async Task Initialize()
         {
-            IsLoading = true;
+            IsLoading = IsRefreshing = true;
 
-            var result = ReloadNews().GetAwaiter();
-
-            await _userDialogs.ConfirmAsync(result.ToString());
-
-            IsLoading = false;
+            Task task = ReloadNews();
+            await task.ContinueWith((prevTask) =>
+            {
+                _userDialogs.Alert("Something went wrong");
+            }, TaskContinuationOptions.OnlyOnFaulted);
+            await Task.WhenAny(task);
+            IsLoading = IsRefreshing = false;
         }
 
         public override void ViewAppearing()
@@ -93,19 +95,28 @@ namespace RPNRadio.Core.ViewModels
             IsLoading = IsRefreshing = true;
 
             var httpClient = new HttpClient();
-            XNamespace nsContent = "http://purl.org/rss/1.0/modules/content/";
-            var feed = "http://rpnradio.com/category/provincial-news/feed/";
-            var responseString = await httpClient.GetStringAsync(feed);
 
-            if (responseString != null)
+            try
             {
-                NewsItems.Clear();
-                var items = await ParseFeed(responseString);
-                for (int i = 0; i < items.Count; i++)
+                XNamespace nsContent = "http://purl.org/rss/1.0/modules/content/";
+                var feed = "http://rpnradio.com/category/provincial-news/feed/";
+                var responseString = await httpClient.GetStringAsync(feed);
+
+                if (responseString != null)
                 {
-                    NewsItem item = items[i];
-                    NewsItems.Add(item);
+                    NewsItems.Clear();
+                    var items = await ParseFeed(responseString);
+
+                    for (int i = 0; i < items.Count; i++)
+                    {
+                        NewsItem item = items[i];
+                        NewsItems.Add(item);
+                    }
                 }
+            }
+            catch (HttpRequestException ex)
+            {
+                throw ex;
             }
 
             IsLoading = IsRefreshing = false;
@@ -129,7 +140,7 @@ namespace RPNRadio.Core.ViewModels
                             Date = (string)item.Element("pubDate"),
                             ImagePath = GetImagePath((string)item.Element("description")).Replace("?resize=150%2c150", string.Empty).Replace("?resize=150%2C150", string.Empty).Replace("-150x150", string.Empty),
                             ThumbPath = GetImagePath((string)item.Element("description"))
-                        }).Take(35).ToList();               
+                        }).Take(35).ToList();
             });
         }
 

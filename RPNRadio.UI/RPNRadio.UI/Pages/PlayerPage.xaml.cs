@@ -41,5 +41,9 @@ namespace RPNRadio.UI.Pages
             base.OnDisappearing();
         }
 
+        private void CachedImage_Error(object sender, FFImageLoading.Forms.CachedImageEvents.ErrorEventArgs e)
+        {
+
+        }
     }
 }

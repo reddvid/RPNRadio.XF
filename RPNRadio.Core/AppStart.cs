@@ -12,6 +12,7 @@ namespace RPNRadio.Core
     {
         public AppStart(IMvxApplication application, IMvxNavigationService navigationService) : base(application, navigationService)
         {
+           //NavigationService.Navigate<RootViewModel>();
         }
 
         protected override async Task NavigateToFirstViewModel(object hint = null)

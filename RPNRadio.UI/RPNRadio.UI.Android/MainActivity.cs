@@ -42,21 +42,7 @@ namespace RPNRadio.UI.Droid
 
             CachedImageRenderer.Init(true);
             CachedImageRenderer.InitImageViewHandler();
-        }
-
-        protected override void OnResume()
-        {
-            HandleIntent();
-            base.OnResume();
-        }
-
-        private async void HandleIntent()
-        {
-            if (!Intent.Action.Equals("android.intent.action.MAIN"))
-            {
-                await Mvx.IoCProvider.Resolve<IMvxNavigationService>().Navigate<PlayerViewModel>();
-            }
-        }
+        }      
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {

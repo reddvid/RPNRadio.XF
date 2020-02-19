@@ -52,5 +52,6 @@ namespace RPNRadio.UI.Pages
 
             title.Opacity = subtitle.Opacity = e.ScrollY / 100;
         }
+
     }
 }

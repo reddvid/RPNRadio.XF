@@ -60,7 +60,7 @@
                     <ffimageloading:CachedImage
                         Grid.Row="2"
                         mvx:Bi.nd="Source Source.ImagePath"
-                        Aspect="AspectFill"
+                        Aspect="AspectFill" 
                         HeightRequest="200"
                         Opacity="0.3" />
                     <ffimageloading:CachedImage
